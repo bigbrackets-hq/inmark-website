@@ -1,0 +1,7 @@
+{
+  "name": "inmark-website",
+  "private": true,
+  "dependencies": {
+    "@vercel/blob": "latest"
+  }
+}

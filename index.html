@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>InMark — An OS for Every Creator Partnership</title>
+  <meta name="description" content="InMark is a creator marketing platform connecting brands with the right creators — from discovery to campaign performance." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&family=Be+Vietnam+Pro:wght@400;500;600&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css?v=32" />
+  <script>document.documentElement.classList.add('pt-enter');</script>
+  <script src="js/content-store.js?v=22"></script>
+  <script src="api/content-js"></script>
+</head>
+<body>
+
+  <!-- ============ PRELOADER ============ -->
+  <div class="loader" id="loader" aria-hidden="true">
+    <div class="text-loop text-loop--loader" id="creatorLoop">
+      <svg class="text-loop-svg" viewBox="0 0 1200 300" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+        <defs>
+          <linearGradient id="loop-grad" gradientUnits="userSpaceOnUse" x1="0" y1="150" x2="1200" y2="150">
+            <stop offset="0" stop-color="#AADCC6"/>
+            <stop offset="0.3" stop-color="#E4EA02"/>
+            <stop offset="0.62" stop-color="#FF2D02"/>
+            <stop offset="1" stop-color="#FF77E5"/>
+          </linearGradient>
+        </defs>
+        <path id="loopPath" d="M -320 150 Q -160 52 0 150 T 320 150 T 640 150 T 960 150 T 1280 150 T 1600 150"
+              fill="none" stroke="url(#loop-grad)" stroke-width="78" stroke-linecap="round" stroke-linejoin="round"/>
+        <text class="text-loop-measure" id="loopMeasure"></text>
+        <text class="text-loop-text"><textPath id="loopHead" href="#loopPath" lengthAdjust="spacing"></textPath></text>
+        <text class="text-loop-text"><textPath id="loopTail" href="#loopPath" lengthAdjust="spacing"></textPath></text>
+      </svg>
+    </div>
+    <div class="loader__inner">
+      <img class="loader__logo" src="assets/inmark-logo-dark.svg" alt="" />
+    </div>
+    <div class="loader__count"><span id="loaderCount">0</span></div>
+  </div>
+  <script>document.documentElement.classList.add('js');document.body.classList.add('is-loading');</script>
+
+  <!-- ============ NAV ============ -->
+  <header class="nav" id="nav">
+    <div class="nav__inner">
+      <a class="nav__logo" href="#" aria-label="InMark home">
+        <img src="assets/inmark-logo-dark.svg" alt="inmark" />
+      </a>
+      <nav class="nav__pill" aria-label="Primary">
+        <a href="#audiences">Audiences</a>
+        <a href="#features">Core Features</a>
+        <a href="#agent">AI Agents</a>
+        <a href="#workflow">Workflow</a>
+        <a href="blog.html">Blogs</a>
+        <a href="#faq">FAQ</a>
+        <a href="#cta">Download App</a>
+      </nav>
+      <div class="nav__actions">
+        <a class="btn btn--white" href="#">Log In</a>
+        <a class="btn btn--dark" href="#cta">Get Started</a>
+      </div>
+      <button class="nav__burger" id="navBurger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span>
+      </button>
+    </div>
+    <div class="nav__mobile" id="navMobile">
+      <a href="#audiences">Audiences</a>
+      <a href="#features">Core Features</a>
+      <a href="#agent">AI Agents</a>
+      <a href="#workflow">Workflow</a>
+      <a href="blog.html">Blogs</a>
+      <a href="#faq">FAQ</a>
+      <a href="#cta">Download App</a>
+      <div class="nav__mobile-cta">
+        <a class="btn btn--white" href="#">Log In</a>
+        <a class="btn btn--dark" href="#cta">Get Started</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <svg class="hero__squiggle" viewBox="0 0 1440 900" fill="none" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <defs>
+        <linearGradient id="sq-grad" x1="0" y1="450" x2="1440" y2="450" gradientUnits="userSpaceOnUse">
+          <stop offset="0" stop-color="#AADCC6"/>
+          <stop offset="0.2" stop-color="#C9E45C"/>
+          <stop offset="0.33" stop-color="#E4EA02"/>
+          <stop offset="0.52" stop-color="#FF8A00"/>
+          <stop offset="0.66" stop-color="#FF2D02"/>
+          <stop offset="0.85" stop-color="#FF77E5"/>
+          <stop offset="1" stop-color="#FF77E5"/>
+        </linearGradient>
+      </defs>
+      <path class="sq-line" pathLength="1" d="M-60 280 C 90 280, 190 288, 258 320 C 322 352, 336 414, 338 478 C 340 542, 360 577, 452 585 C 560 593, 700 589, 860 589 C 990 589, 1120 593, 1196 560 C 1262 530, 1250 452, 1262 398 C 1272 344, 1300 292, 1372 282 C 1420 274, 1450 276, 1500 276"
+            stroke="url(#sq-grad)" stroke-width="18" stroke-linecap="round"/>
+    </svg>
+
+    <figure class="hero__card hero__card--tl" data-mdepth="0.055"><img data-plx="-14" src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=520&q=80&auto=format&fit=crop" alt="Creators enjoying a picnic together" /></figure>
+    <figure class="hero__card hero__card--bl" data-mdepth="0.09"><img data-plx="10" src="https://images.unsplash.com/photo-1519046904884-53103b34b206?w=560&q=80&auto=format&fit=crop" alt="Deck chairs on a sunny beach" /></figure>
+    <figure class="hero__card hero__card--tr" data-mdepth="0.06"><img data-plx="12" src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=520&q=80&auto=format&fit=crop" alt="Aerial view of a villa garden pool" /></figure>
+    <figure class="hero__card hero__card--br" data-mdepth="0.085"><img data-plx="-11" src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=560&q=80&auto=format&fit=crop" alt="Estate with a garden pool" /></figure>
+
+    <div class="hero__content">
+      <h1 class="hero__title">
+        <span class="hero__line">An OS <span class="hero__chip" id="heroChip"><img src="https://images.unsplash.com/photo-1775486101687-1950422dbca7?w=300&q=78&auto=format&fit=crop" alt="" /></span> for every</span>
+        <span class="hero__line">creator partnerships</span>
+      </h1>
+      <p class="hero__sub">InMark is a creator marketing platform connecting brands with the&nbsp;right creators — from discovery to campaign performance.</p>
+      <div class="hero__cta">
+        <a class="btn-go btn-go--lime" href="#cta"><span class="btn-go__label">Book a Demo</span><span class="btn-go__arrow"><svg viewBox="0 0 16 16"><path d="M3 13 13 3M5.5 3H13v7.5"/></svg></span></a>
+      </div>
+    </div>
+
+    <figure class="hero__card hero__card--bottom" data-mdepth="0.035"><img data-plx="6" src="https://images.unsplash.com/photo-1512428559087-560fa5ceab42?w=680&q=80&auto=format&fit=crop" alt="Creator filming with a phone" /></figure>
+
+  </section>
+
+  <!-- ============ MARQUEE MEDIA BAND (expands from a small card on scroll) ============ -->
+  <section class="band" id="band">
+    <div class="band__sticky">
+      <div class="band__frame" id="bandFrame">
+        <div class="band__win" id="bandWin">
+          <img id="bandImg" src="https://images.unsplash.com/photo-1775486101687-1950422dbca7?w=1800&q=78&auto=format&fit=crop" alt="Portrait of a creator" />
+          <svg class="band__blob" id="bandBlob" viewBox="0 0 120 110" aria-hidden="true">
+            <path d="M60 6 C 92 6, 112 30, 112 62 C 112 96, 88 110, 60 110 C 32 110, 8 96, 8 62 C 8 30, 28 6, 60 6 Z" fill="#35C09B"/>
+            <circle cx="44" cy="46" r="6" fill="#0D0D0D"/>
+            <circle cx="76" cy="46" r="6" fill="#0D0D0D"/>
+            <path d="M46 68 Q 60 80 74 68" stroke="#0D0D0D" stroke-width="5" fill="none" stroke-linecap="round"/>
+          </svg>
+        </div>
+      </div>
+      <svg class="band__line" id="bandLine" fill="none" aria-hidden="true">
+        <defs>
+          <linearGradient id="bl-grad" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="1440" y2="0">
+            <stop offset="0" stop-color="#E4EA02"/>
+            <stop offset="0.4" stop-color="#FF8A00"/>
+            <stop offset="0.7" stop-color="#FF2D02"/>
+            <stop offset="1" stop-color="#FF77E5"/>
+          </linearGradient>
+        </defs>
+        <path id="bandWrap" stroke="url(#bl-grad)" stroke-width="13" stroke-linecap="round"/>
+        <path id="bandTail" stroke="url(#bl-grad)" stroke-width="13" stroke-linecap="round"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- ============ FOUR AUDIENCES ============ -->
+  <section class="audiences" id="audiences">
+    <div class="audiences__sticky">
+      <svg class="aud-bgline" id="audBgLine" fill="none" aria-hidden="true">
+      <defs>
+        <linearGradient id="aud-grad" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="2400">
+          <stop offset="0" stop-color="#FF77E5"/>
+          <stop offset="0.45" stop-color="#FF2D02"/>
+          <stop offset="0.8" stop-color="#FF8A00"/>
+          <stop offset="1" stop-color="#E4EA02"/>
+        </linearGradient>
+      </defs>
+      <path id="audBgPath" stroke="url(#aud-grad)" stroke-width="16" stroke-linecap="round"/>
+    </svg>
+      <div class="container audiences__headwrap">
+      <div class="audiences__head">
+        <h2 class="h2 reveal-head">Four Audiences</h2>
+        <div class="tabs reveal" role="tablist" aria-label="Audience">
+          <button class="tab is-active" role="tab" aria-selected="true" data-index="0">Influencers</button>
+          <button class="tab" role="tab" aria-selected="false" data-index="1">Brands</button>
+          <button class="tab" role="tab" aria-selected="false" data-index="2">Agency</button>
+          <button class="tab" role="tab" aria-selected="false" data-index="3">UGC Creators</button>
+        </div>
+      </div>
+      <div class="aud-row" id="audRow" data-stagger>
+      <article class="aud-card aud-card--olive" id="aud-0">
+        <div class="aud-card__text">
+          <p class="aud-card__eyebrow"><span class="aud-num">1</span> Influencer</p>
+          <h3 class="aud-card__title">Global Events, Brand Activations, Experience Content</h3>
+          <p class="aud-card__body">Get matched with campaigns that fit your audience, agree transparent rates, and deliver everything from one calm, shared workbench.</p>
+          <div class="aud-card__cta">
+            <a class="btn-go btn-go--white" href="#cta"><span class="btn-go__label">Start a campaign</span><span class="btn-go__arrow"><svg viewBox="0 0 16 16"><path d="M3 13 13 3M5.5 3H13v7.5"/></svg></span></a>
+          </div>
+        </div>
+        <div class="aud-card__phone">
+          <div class="phone">
+            <div class="phone__notch"></div>
+            <div class="phone__screen">
+              <div class="ph-status"><span>9:41</span><span class="ph-status__icons">▪▪▪ ⌁ ▮</span></div>
+              <div class="ph-head"><strong>Workbench</strong><span class="ph-head__dot">⋯</span></div>
+              <div class="ph-search">⌕&nbsp; Search...</div>
+              <div class="ph-chips"><span class="ph-chip ph-chip--on">Active</span><span class="ph-chip">Completed</span></div>
+              <div class="ph-item">
+                <div class="ph-item__row"><span class="ph-logo ph-logo--olive">✳</span><span class="ph-item__brand">Prixa Digital</span><span class="ph-item__date">📌 2 Jun, 2026</span></div>
+                <p class="ph-item__title">Summer Glow Launch Beauty Product Campaign</p>
+                <div class="ph-tags"><span>1 Reel</span><span>2 Stories</span><span>1 Long form</span><span>1 Tiktok</span><span>2 Carousel</span></div>
+                <div class="ph-amount"><div><span class="ph-amount__label">Amount</span><strong>Cr. 2,500</strong> <em>(NPR 20,000)</em></div><img class="ph-avatar" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=64&q=70&auto=format&fit=crop" alt="" /></div>
+              </div>
+              <div class="ph-item">
+                <div class="ph-item__row"><span class="ph-logo ph-logo--blue">✕</span><span class="ph-item__brand">Prixa Digital</span><span class="ph-item__date">📌 2 Jun, 2026</span></div>
+                <p class="ph-item__title">Summer Glow Launch Beauty Product Campaign</p>
+                <div class="ph-tags"><span>1 Reel</span><span>2 Stories</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="aud-card aud-card--red" id="aud-1">
+        <div class="aud-card__text">
+          <p class="aud-card__eyebrow"><span class="aud-num">2</span> Brands</p>
+          <h3 class="aud-card__title">Find Creators Who Actually Convert</h3>
+          <p class="aud-card__body">Discover the right creators, fund campaigns with escrow, brief them in a shared workbench, and release payment only on approval.</p>
+          <div class="aud-card__cta">
+            <a class="btn-go btn-go--white" href="#cta"><span class="btn-go__label">Start a campaign</span><span class="btn-go__arrow"><svg viewBox="0 0 16 16"><path d="M3 13 13 3M5.5 3H13v7.5"/></svg></span></a>
+          </div>
+        </div>
+        <div class="aud-card__phone">
+          <div class="phone">
+            <div class="phone__notch"></div>
+            <div class="phone__screen">
+              <div class="ph-status"><span>9:41</span><span class="ph-status__icons">▪▪▪ ⌁ ▮</span></div>
+              <div class="ph-head"><strong>Workbench</strong><span class="ph-head__dot">⋯</span></div>
+              <div class="ph-search">⌕&nbsp; Search...</div>
+              <div class="ph-chips"><span class="ph-chip ph-chip--on">Active</span><span class="ph-chip">Completed</span></div>
+              <div class="ph-item">
+                <div class="ph-item__row"><span class="ph-logo ph-logo--olive">✳</span><span class="ph-item__brand">Prixa Digital</span><span class="ph-item__date">📌 2 Jun, 2026</span></div>
+                <p class="ph-item__title">Summer Glow Launch Beauty Product Campaign</p>
+                <div class="ph-tags"><span>1 Reel</span><span>2 Stories</span><span>1 Long form</span><span>1 Tiktok</span><span>2 Carousel</span></div>
+                <div class="ph-amount"><div><span class="ph-amount__label">Amount</span><strong>Cr. 2,500</strong> <em>(NPR 20,000)</em></div><img class="ph-avatar" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=64&q=70&auto=format&fit=crop" alt="" /></div>
+              </div>
+              <div class="ph-item">
+                <div class="ph-item__row"><span class="ph-logo ph-logo--blue">✕</span><span class="ph-item__brand">Prixa Digital</span><span class="ph-item__date">📌 2 Jun, 2026</span></div>
+                <p class="ph-item__title">Summer Glow Launch Beauty Product Campaign</p>
+                <div class="ph-tags"><span>1 Reel</span><span>2 Stories</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="aud-card aud-card--green" id="aud-2">
+        <div class="aud-card__text">
+          <p class="aud-card__eyebrow"><span class="aud-num">3</span> Agency</p>
+          <h3 class="aud-card__title">Run Every Client Campaign in One Place</h3>
+          <p class="aud-card__body">Manage brands, rosters, and deliverables across clients without spreadsheets — one workbench per campaign, one clear status view.</p>
+          <div class="aud-card__cta">
+            <a class="btn-go btn-go--white" href="#cta"><span class="btn-go__label">Start a campaign</span><span class="btn-go__arrow"><svg viewBox="0 0 16 16"><path d="M3 13 13 3M5.5 3H13v7.5"/></svg></span></a>
+          </div>
+        </div>
+        <div class="aud-card__phone">
+          <div class="phone">
+            <div class="phone__notch"></div>
+            <div class="phone__screen">
+              <div class="ph-status"><span>9:41</span><span class="ph-status__icons">▪▪▪ ⌁ ▮</span></div>
+              <div class="ph-head"><strong>Workbench</strong><span class="ph-head__dot">⋯</span></div>
+              <div class="ph-search">⌕&nbsp; Search...</div>
+              <div class="ph-chips"><span class="ph-chip ph-chip--on">Active</span><span class="ph-chip">Completed</span></div>
+              <div class="ph-item">
+                <div class="ph-item__row"><span class="ph-logo ph-logo--olive">✳</span><span class="ph-item__brand">Prixa Digital</span><span class="ph-item__date">📌 2 Jun, 2026</span></div>
+                <p class="ph-item__title">Summer Glow Launch Beauty Product Campaign</p>
+                <div class="ph-tags"><span>1 Reel</span><span>2 Stories</span><span>1 Long form</span><span>1 Tiktok</span><span>2 Carousel</span></div>
+                <div class="ph-amount"><div><span class="ph-amount__label">Amount</span><strong>Cr. 2,500</strong> <em>(NPR 20,000)</em></div><img class="ph-avatar" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=64&q=70&auto=format&fit=crop" alt="" /></div>
+              </div>
+              <div class="ph-item">
+                <div class="ph-item__row"><span class="ph-logo ph-logo--blue">✕</span><span class="ph-item__brand">Prixa Digital</span><span class="ph-item__date">📌 2 Jun, 2026</span></div>
+                <p class="ph-item__title">Summer Glow Launch Beauty Product Campaign</p>
+                <div class="ph-tags"><span>1 Reel</span><span>2 Stories</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="aud-card aud-card--plum" id="aud-3">
+        <div class="aud-card__text">
+          <p class="aud-card__eyebrow"><span class="aud-num">4</span> UGC Creators</p>
+          <h3 class="aud-card__title">Ship Content Briefs Without the Chaos</h3>
+          <p class="aud-card__body">Receive structured briefs, upload deliverables, and get paid on approval — no public roster, no DMs, no chasing invoices.</p>
+          <div class="aud-card__cta">
+            <a class="btn-go btn-go--white" href="#cta"><span class="btn-go__label">Start a campaign</span><span class="btn-go__arrow"><svg viewBox="0 0 16 16"><path d="M3 13 13 3M5.5 3H13v7.5"/></svg></span></a>
+          </div>
+        </div>
+        <div class="aud-card__phone">
+          <div class="phone">
+            <div class="phone__notch"></div>
+            <div class="phone__screen">
+              <div class="ph-status"><span>9:41</span><span class="ph-status__icons">▪▪▪ ⌁ ▮</span></div>
+              <div class="ph-head"><strong>Workbench</strong><span class="ph-head__dot">⋯</span></div>
+              <div class="ph-search">⌕&nbsp; Search...</div>
+              <div class="ph-chips"><span class="ph-chip ph-chip--on">Active</span><span class="ph-chip">Completed</span></div>
+              <div class="ph-item">
+                <div class="ph-item__row"><span class="ph-logo ph-logo--olive">✳</span><span class="ph-item__brand">Prixa Digital</span><span class="ph-item__date">📌 2 Jun, 2026</span></div>
+                <p class="ph-item__title">Summer Glow Launch Beauty Product Campaign</p>
+                <div class="ph-tags"><span>1 Reel</span><span>2 Stories</span><span>1 Long form</span><span>1 Tiktok</span><span>2 Carousel</span></div>
+                <div class="ph-amount"><div><span class="ph-amount__label">Amount</span><strong>Cr. 2,500</strong> <em>(NPR 20,000)</em></div><img class="ph-avatar" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=64&q=70&auto=format&fit=crop" alt="" /></div>
+              </div>
+              <div class="ph-item">
+                <div class="ph-item__row"><span class="ph-logo ph-logo--blue">✕</span><span class="ph-item__brand">Prixa Digital</span><span class="ph-item__date">📌 2 Jun, 2026</span></div>
+                <p class="ph-item__title">Summer Glow Launch Beauty Product Campaign</p>
+                <div class="ph-tags"><span>1 Reel</span><span>2 Stories</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CORE FEATURES ============ -->
+  <section class="features" id="features">
+    <div class="container">
+      <h2 class="h2 features__title reveal-head">Core Features</h2>
+      <div class="features__grid" data-stagger>
+        <article class="fcard fcard--mint fcard--wide">
+          <div class="fcard__body">
+            <span class="fcard__icon"><svg viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21"/></svg></span>
+            <h3 class="title-md">Find the right creators</h3>
+            <p>Search verified creators by niche, audience, location, and format, including YouTube metrics from connected Google accounts. Filter, save, invite.</p>
+          </div>
+          <div class="fcard__panel">
+            <div class="invite-panel">
+              <p class="invite-panel__title">Invite your top matched creators to the campaign.</p>
+              <div class="invite-panel__row">
+                <img class="invite-panel__avatar" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=96&q=70&auto=format&fit=crop" alt="" />
+                <div class="invite-panel__who"><strong>Samip Poudel</strong><span>@poudel.samip</span></div>
+                <div class="invite-panel__meta"><strong>1.9m</strong><span>Followers</span></div>
+              </div>
+              <div class="invite-panel__thumbs">
+                <img src="https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=200&q=70&auto=format&fit=crop" alt="" />
+                <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=200&q=70&auto=format&fit=crop" alt="" />
+                <img src="https://images.unsplash.com/photo-1502920917128-1aa500764cbd?w=200&q=70&auto=format&fit=crop" alt="" />
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="fcard fcard--coral">
+          <div class="fcard__body">
+            <span class="fcard__icon"><svg viewBox="0 0 24 24"><path d="M3 20h18M4 16l4.5-5 3.5 3 5-6 3 3.5"/></svg></span>
+            <h3 class="title-md">Live campaign health</h3>
+            <p>On-time percentages, approval rates, revision cycles — surfaced quietly in every workbench.</p>
+          </div>
+          <svg class="fcard__zigzag" viewBox="0 0 437 278" preserveAspectRatio="none" fill="none" aria-hidden="true">
+            <path d="M-14 352.107L75.5 291.607L168.5 365.607L301.5 268.107L369.5 291.607L462 208.607" stroke="#AD2104" stroke-width="50"/>
+            <path d="M-14 300.107L75.5 239.607L168.5 313.607L301.5 216.107L369.5 239.607L462 156.607" stroke="#C42403" stroke-width="50"/>
+            <path d="M-19 254.107L70.5 193.607L163.5 267.607L296.5 170.107L364.5 193.607L457 110.607" stroke="#D52703" stroke-width="50"/>
+            <path d="M-14 212.107L75.5 151.607L168.5 225.607L301.5 128.107L369.5 151.607L462 68.6074" stroke="#E52902" stroke-width="50"/>
+            <path d="M-14 162.107L75.5 101.607L168.5 175.607L301.5 78.1074L369.5 101.607L462 18.6074" stroke="#F8360E" stroke-width="50"/>
+          </svg>
+        </article>
+
+        <article class="fcard fcard--lime">
+          <div class="fcard__body">
+            <span class="fcard__icon"><svg viewBox="0 0 24 24"><circle cx="6" cy="6" r="2.5"/><circle cx="18" cy="6" r="2.5"/><circle cx="12" cy="18" r="2.5"/><path d="M7.8 7.8 10.5 15M16.2 7.8 13.5 15"/></svg></span>
+            <h3 class="title-md">Shared workbenches</h3>
+            <p>One room per campaign — deliverables, files, discussion, approvals. Calm and structured, never resembling Slack.</p>
+          </div>
+          <div class="fcard__phone">
+            <img class="fcard__phone-img" src="assets/feature-workbench-phone.svg" alt="" loading="lazy" />
+          </div>
+        </article>
+
+        <article class="fcard fcard--pink">
+          <div class="fcard__body">
+            <span class="fcard__icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg></span>
+            <h3 class="title-md">Structured approvals</h3>
+            <p>Revisions are recorded. Approvals are explicit. Every decision lives in the workbench, not in DMs.</p>
+          </div>
+          <svg class="fcard__chevrons" viewBox="0 0 439 518" preserveAspectRatio="none" fill="none" aria-hidden="true">
+            <path d="M-73.1484 135.524L97.3657 338.195L534.239 25.4312" stroke="#FE67E1" stroke-width="62.5528"/>
+            <path d="M-80.6562 216.838L89.8578 419.51L545.497 86.103" stroke="#FB54DB" stroke-width="62.5528"/>
+            <path d="M-88.1562 299.409L82.3578 502.081L531.117 172.427" stroke="#FF37D9" stroke-width="62.5528"/>
+            <path d="M-100.672 380.731L69.8422 583.402L561.762 219.97" stroke="#FE19D2" stroke-width="62.5528"/>
+            <path d="M-344 581.521L116.134 615.925L608.054 252.494" stroke="#F300C4" stroke-width="62.5528"/>
+            <path d="M-92.5391 536.487L162.421 648.457L654.341 285.025" stroke="#DE00B3" stroke-width="62.5528"/>
+            <path d="M-54.3828 585.276L200.578 697.246L692.498 333.814" stroke="#C700A0" stroke-width="62.5528"/>
+          </svg>
+        </article>
+
+        <article class="fcard fcard--mint">
+          <div class="fcard__body">
+            <span class="fcard__icon"><svg viewBox="0 0 24 24"><path d="M12 3l1.8 4.8L18.5 9l-4.7 1.2L12 15l-1.8-4.8L5.5 9l4.7-1.2L12 3zM19 15l.9 2.4 2.1.6-2.1.6L19 21l-.9-2.4-2.1-.6 2.1-.6L19 15z"/></svg></span>
+            <h3 class="title-md">AI-drafted briefs</h3>
+            <p>Answer a few quick questions. inmark.ai drafts deliverables, budget, and funding you review and ship.</p>
+          </div>
+          <img class="fcard__mascot" src="assets/feature-ai-mascot.svg" alt="" loading="lazy" />
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ AI AGENT ============ -->
+  <section class="agent" id="agent">
+   <div class="agent__sticky">
+
+    <div class="container">
+      <div class="agent__head">
+        <h2 class="h2 reveal-head">Meet Your AI Agent</h2>
+        <div class="arrows reveal">
+          <button class="btn-circle btn-circle--ghost" data-carousel-prev="agentTrack" aria-label="Previous"><svg viewBox="0 0 16 16"><path d="M10 2 4 8l6 6"/></svg></button>
+          <button class="btn-circle btn-circle--ghost" data-carousel-next="agentTrack" aria-label="Next"><svg viewBox="0 0 16 16"><path d="M6 2l6 6-6 6"/></svg></button>
+        </div>
+      </div>
+    </div>
+    <div class="agent__track" id="agentTrack" data-stagger>
+      <article class="agent-card">
+        <div class="agent-card__art">
+          <div class="mock-report">
+            <div class="mr-head"><strong>Portfolio Audit</strong><span class="mr-chip">Creator fit</span></div>
+            <div class="mr-score"><strong>40</strong><span>/100 · needs review</span></div>
+            <div class="mr-row"><i class="mr-dot mr-dot--red"></i><span class="mr-line w82"></span></div>
+            <div class="mr-row"><i class="mr-dot mr-dot--amber"></i><span class="mr-line w64"></span></div>
+            <div class="mr-row"><i class="mr-dot mr-dot--amber"></i><span class="mr-line w74"></span></div>
+            <div class="mr-row"><i class="mr-dot mr-dot--green"></i><span class="mr-line w58"></span></div>
+          </div>
+        </div>
+        <h3 class="agent-card__title">Portfolio Audit</h3>
+        <p class="body-sm">Your agent reviews a creator's past work and flags fit, tone, and audience overlap before you shortlist.</p>
+      </article>
+      <article class="agent-card">
+        <div class="agent-card__art">
+          <div class="mock-sheet">
+            <div class="ms-nav"><span>←</span> Campaign creation</div>
+            <div class="ms-panel">
+              <div class="ms-bar"><span>←</span><strong>Write with AI</strong><em>Done</em></div>
+              <p>Eg. Draft a playful brief for new product launching on 24 Sept...</p>
+            </div>
+          </div>
+        </div>
+        <h3 class="agent-card__title">Draft with AI</h3>
+        <p class="body-sm">Answer a few questions in plain language — your agent drafts the brief, deliverables, and budget for review.</p>
+      </article>
+      <article class="agent-card">
+        <div class="agent-card__art">
+          <div class="mock-report">
+            <div class="mr-head"><strong>Live Posts Summary</strong><span class="mr-chip mr-chip--green">On track</span></div>
+            <div class="mr-score mr-score--green"><strong>86</strong><span>/100 · engagement</span></div>
+            <div class="mr-row"><i class="mr-dot mr-dot--green"></i><span class="mr-line w76"></span></div>
+            <div class="mr-row"><i class="mr-dot mr-dot--green"></i><span class="mr-line w60"></span></div>
+            <div class="mr-row"><i class="mr-dot mr-dot--amber"></i><span class="mr-line w70"></span></div>
+          </div>
+        </div>
+        <h3 class="agent-card__title">Live Posts Summary</h3>
+        <p class="body-sm">Every published post is tracked and summarized — reach, engagement, and sentiment in plain language.</p>
+      </article>
+      <article class="agent-card">
+        <div class="agent-card__art">
+          <div class="mock-report">
+            <div class="mr-head"><strong>Importing…</strong><span class="mr-chip">3 of 4</span></div>
+            <div class="mr-prog"><i style="width:72%"></i></div>
+            <div class="mr-row"><i class="mr-check">✓</i><span class="mr-line w70"></span></div>
+            <div class="mr-row"><i class="mr-check">✓</i><span class="mr-line w56"></span></div>
+            <div class="mr-row"><i class="mr-check">✓</i><span class="mr-line w66"></span></div>
+            <div class="mr-row"><i class="mr-check mr-check--wait">•</i><span class="mr-line w48"></span></div>
+          </div>
+        </div>
+        <h3 class="agent-card__title">Seamless Import</h3>
+        <p class="body-sm">Bring existing campaigns, rosters, and assets with you. Everything lands structured and ready to run.</p>
+      </article>
+    </div>
+   </div>
+  </section>
+
+  <!-- ============ WORKFLOW (scroll collage) ============ -->
+  <section class="workflow" id="workflow">
+
+    <div class="workflow__sticky">
+      <svg class="workflow__line" viewBox="0 0 1440 900" fill="none" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <defs>
+          <linearGradient id="wf-grad" x1="0" y1="450" x2="1440" y2="450" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="#E4EA02"/>
+            <stop offset="0.5" stop-color="#FF77E5"/>
+            <stop offset="1" stop-color="#FF2D02"/>
+          </linearGradient>
+        </defs>
+        <path id="wfLinePath" pathLength="1" d="M -40 320 C 260 250, 700 230, 1080 300 C 1380 356, 1480 430, 1380 520 C 1260 626, 800 640, 420 600 C 180 574, 60 610, -40 680" stroke="url(#wf-grad)" stroke-width="16" stroke-linecap="round"/>
+      </svg>
+      <div class="workflow__headline">
+        <h2 class="h2 wf-title">
+          <span class="wf-title__a">The workflow begins<br />with a brief</span>
+          <span class="wf-title__b">It ends with a<br />satisfied campaign</span>
+        </h2>
+        <p class="workflow__sub">From brief to payout — seven steps, one calm workbench.</p>
+      </div>
+      <div class="workflow__cards" id="wfCards">
+        <article class="wf-card wf-card--limetint">
+          <span class="wf-card__badge">01</span>
+          <h3 class="h4">Configure Campaign</h3>
+          <img src="https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?w=560&q=75&auto=format&fit=crop" alt="" />
+          <p class="wf-card__caption">Write once, edit anywhere</p>
+        </article>
+        <article class="wf-card wf-card--pinklight">
+          <span class="wf-card__badge">02</span>
+          <h3 class="h4">Configure Content</h3>
+          <div class="wf-card__illo"><svg viewBox="0 0 200 110" fill="none" aria-hidden="true"><rect x="30" y="18" width="80" height="12" rx="6" fill="#383901"/><rect x="30" y="42" width="140" height="9" rx="4.5" fill="#383901" opacity=".45"/><rect x="30" y="60" width="120" height="9" rx="4.5" fill="#383901" opacity=".45"/><rect x="30" y="80" width="56" height="14" rx="7" fill="#383901"/></svg></div>
+          <p class="wf-card__caption">Curated invitations</p>
+        </article>
+        <article class="wf-card wf-card--cream">
+          <span class="wf-card__badge">03</span>
+          <h3 class="h4">Set Budget</h3>
+          <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=560&q=75&auto=format&fit=crop" alt="" />
+          <p class="wf-card__caption">Funded with escrow</p>
+        </article>
+        <article class="wf-card wf-card--mint">
+          <span class="wf-card__badge">04</span>
+          <h3 class="h4">Invite Creators</h3>
+          <div class="wf-card__illo"><svg viewBox="0 0 200 110" fill="none" aria-hidden="true"><circle cx="70" cy="55" r="24" fill="#383901"/><circle cx="104" cy="55" r="24" fill="#383901" opacity=".55"/><circle cx="138" cy="55" r="24" fill="#383901" opacity=".3"/><circle cx="63" cy="48" r="8" fill="#AADCC6"/><path d="M56 68c3-8 11-8 14 0" stroke="#AADCC6" stroke-width="5" stroke-linecap="round"/></svg></div>
+          <p class="wf-card__caption">Shortlist and offer</p>
+        </article>
+        <article class="wf-card wf-card--white">
+          <span class="wf-card__badge">05</span>
+          <h3 class="h4">Run Campaign</h3>
+          <img src="https://images.unsplash.com/photo-1495216875107-c6c043eb703f?w=560&q=75&auto=format&fit=crop" alt="" />
+          <p class="wf-card__caption">Workbench in motion</p>
+        </article>
+        <article class="wf-card wf-card--corallight">
+          <span class="wf-card__badge">06</span>
+          <h3 class="h4">Campaign Analytics</h3>
+          <div class="wf-card__illo"><svg viewBox="0 0 200 110" fill="none" aria-hidden="true"><rect x="36" y="58" width="20" height="34" rx="6" fill="#7A2A14"/><rect x="68" y="40" width="20" height="52" rx="6" fill="#7A2A14" opacity=".75"/><rect x="100" y="24" width="20" height="68" rx="6" fill="#7A2A14"/><rect x="132" y="46" width="20" height="46" rx="6" fill="#7A2A14" opacity=".6"/><path d="M40 34 L74 22 L106 12 L142 30" stroke="#7A2A14" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <p class="wf-card__caption">Structured uploads</p>
+        </article>
+        <article class="wf-card wf-card--lime">
+          <span class="wf-card__badge">07</span>
+          <h3 class="h4">Approve</h3>
+          <div class="wf-card__illo"><svg viewBox="0 0 200 110" fill="none" aria-hidden="true"><circle cx="100" cy="55" r="38" stroke="#383901" stroke-width="7"/><path d="M84 56 L96 68 L118 44" stroke="#383901" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <p class="wf-card__caption">Explicit, recorded</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ BLOGS ============ -->
+  <section class="blogs" id="blogs">
+    <div class="container">
+      <div class="blogs__head">
+        <h2 class="h2 reveal-head">Blogs</h2>
+        <div class="arrows reveal">
+          <button class="btn-circle btn-circle--ghost" data-carousel-prev="blogTrack" aria-label="Previous post"><svg viewBox="0 0 16 16"><path d="M10 2 4 8l6 6"/></svg></button>
+          <button class="btn-circle btn-circle--ghost" data-carousel-next="blogTrack" aria-label="Next post"><svg viewBox="0 0 16 16"><path d="M6 2l6 6-6 6"/></svg></button>
+        </div>
+      </div>
+    </div>
+    <div class="blogs__track" id="blogTrack" data-stagger>
+      <a class="blog-card" href="blog-post.html?p=launch-first-campaign">
+        <figure><img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=800&q=75&auto=format&fit=crop" alt="" /></figure>
+        <h3>How to Launch Your First Campaign on InMark</h3>
+        <p class="blog-card__meta">Jan 26, 2026 &nbsp;•&nbsp; 7 Min Read</p>
+      </a>
+      <a class="blog-card" href="blog-post.html?p=escrow-101">
+        <figure><img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=800&q=75&auto=format&fit=crop" alt="" /></figure>
+        <h3>Escrow 101: How Creator Payouts Stay Safe</h3>
+        <p class="blog-card__meta">Feb 09, 2026 &nbsp;•&nbsp; 5 Min Read</p>
+      </a>
+      <a class="blog-card" href="blog-post.html?p=ugc-vs-influencer">
+        <figure><img src="https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=800&q=75&auto=format&fit=crop" alt="" /></figure>
+        <h3>UGC vs Influencer Campaigns: Which Fits Your Brand?</h3>
+        <p class="blog-card__meta">Mar 03, 2026 &nbsp;•&nbsp; 6 Min Read</p>
+      </a>
+      <a class="blog-card" href="blog-post.html?p=reading-analytics">
+        <figure><img src="https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?w=800&q=75&auto=format&fit=crop" alt="" /></figure>
+        <h3>Reading Campaign Analytics Like a Strategist</h3>
+        <p class="blog-card__meta">Mar 21, 2026 &nbsp;•&nbsp; 8 Min Read</p>
+      </a>
+    </div>
+  </section>
+
+  <!-- ============ FAQ ============ -->
+  <section class="faq" id="faq">
+    <div class="container faq__grid">
+      <div class="faq__left">
+        <h2 class="h2 reveal-head">Frequently<br />Asked Question</h2>
+        <div class="tabs tabs--faq reveal" role="tablist" aria-label="FAQ audience">
+          <button class="tab is-active" role="tab" aria-selected="true" data-faq="brands">Brands</button>
+          <button class="tab" role="tab" aria-selected="false" data-faq="influencers">Influencers</button>
+          <button class="tab" role="tab" aria-selected="false" data-faq="agency">Agency</button>
+          <button class="tab" role="tab" aria-selected="false" data-faq="ugc">UGC Creators</button>
+        </div>
+      </div>
+      <div class="faq__list" id="faqList"><!-- populated by JS --></div>
+    </div>
+  </section>
+
+  <!-- ============ FINAL CTA ============ -->
+  <section class="cta" id="cta">
+    <div class="cta__app reveal">
+      <a class="cta__qr" href="https://inmark.app/get" data-store-link>
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=https%3A%2F%2Finmark.app%2Fget" alt="QR code to download the InMark app" width="90" height="90" />
+        <span>Download App</span>
+      </a>
+      <div class="cta__stores">
+        <a class="store-btn" href="https://apps.apple.com/app/inmark/id0000000000"><span class="store-btn__glyph"></span><span><small>Download on the</small>App Store</span></a>
+        <a class="store-btn" href="https://play.google.com/store/apps/details?id=app.inmark"><span class="store-btn__glyph">▶</span><span><small>Get it on</small>Google Play</span></a>
+      </div>
+      <img class="cta__illo-img" src="assets/Download-app-illustration.png" alt="Illustration of a creator checking earnings in the InMark app"
+           onerror="this.remove(); var s=document.querySelector('.cta__illo'); if (s) s.style.display='block';" />
+      <svg class="cta__illo" style="display:none" viewBox="0 0 640 400" fill="none" aria-hidden="true">
+        <defs>
+          <linearGradient id="illo-flow" x1="0" y1="200" x2="640" y2="200" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="#AADCC6"/>
+            <stop offset="0.4" stop-color="#E4EA02"/>
+            <stop offset="0.7" stop-color="#FF2D02"/>
+            <stop offset="1" stop-color="#FF77E5"/>
+          </linearGradient>
+        </defs>
+        <path d="M-20 300 C 120 340, 180 210, 320 210 C 460 210, 520 90, 660 110" stroke="url(#illo-flow)" stroke-width="16" stroke-linecap="round"/>
+        <rect x="250" y="60" width="140" height="280" rx="26" fill="#0D0D0D"/>
+        <rect x="258" y="68" width="124" height="264" rx="20" fill="#FFFFFF"/>
+        <rect x="296" y="76" width="48" height="9" rx="4.5" fill="#0D0D0D"/>
+        <rect x="270" y="100" width="64" height="8" rx="4" fill="#141415"/>
+        <rect x="270" y="118" width="100" height="24" rx="8" fill="#F7F9DC"/>
+        <rect x="270" y="150" width="100" height="24" rx="8" fill="#F2F2F3"/>
+        <rect x="270" y="182" width="100" height="32" rx="10" fill="#E4EA02"/>
+        <rect x="286" y="193" width="68" height="9" rx="4.5" fill="#141415"/>
+        <rect x="270" y="224" width="47" height="47" rx="10" fill="#AADCC6"/>
+        <rect x="323" y="224" width="47" height="47" rx="10" fill="#FF77E5"/>
+        <path d="M470 96 L 481 120 L 507 123 L 488 140 L 493 166 L 470 152 L 447 166 L 452 140 L 433 123 L 459 120 Z" fill="#E4EA02"/>
+        <circle cx="180" cy="120" r="10" fill="#FF77E5"/>
+        <circle cx="480" cy="290" r="10" fill="#AADCC6"/>
+      </svg>
+      <div class="cta__panel">
+        <div class="cta__copy">
+          <h2 class="h2">Your Next<br />Campaign Starts Here</h2>
+          <p class="body-md">InMark is a creator marketing platform connecting brands with the&nbsp;right creators — from discovery to campaign performance.</p>
+        </div>
+        <div class="cta__side">
+          <p class="cta__try">Try Inmark for free. Cancel anytime</p>
+          <ul class="checks checks--dark">
+            <li>Escrowed campaign funding</li>
+            <li>AI-drafted briefs and budgets</li>
+            <li>Live performance reporting</li>
+          </ul>
+          <div class="cta__buttons">
+            <a class="btn btn--white btn--lg" href="#">Get Started</a>
+            <a class="btn btn--outline btn--lg" href="#">Book a Demo</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container promo" data-stagger>
+      <article class="promo-card">
+        <div class="promo-card__body">
+          <h3 class="h5">The Inmark App</h3>
+          <div class="promo-card__cta">
+            <a class="btn-go btn-go--dark" href="https://inmark.app/get" data-store-link><span class="btn-go__label">Download the App</span><span class="btn-go__arrow"><svg viewBox="0 0 16 16"><path d="M3 13 13 3M5.5 3H13v7.5"/></svg></span></a>
+          </div>
+        </div>
+        <svg class="promo-card__art" viewBox="0 0 420 340" aria-hidden="true">
+          <defs>
+            <linearGradient id="pr-a" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#E4EA02"/><stop offset="1" stop-color="#9BD84F"/></linearGradient>
+            <linearGradient id="pr-b" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#FF77E5"/><stop offset="1" stop-color="#FFB1F0"/></linearGradient>
+            <linearGradient id="pr-r" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FF2D02"/><stop offset="1" stop-color="#FF77E5"/></linearGradient>
+          </defs>
+          <path d="M210 0 L420 0 L420 340 L140 340 Z" fill="url(#pr-a)"/>
+          <path d="M140 340 C 90 220, 170 130, 120 0 L 40 0 C 110 130, 30 220, 60 340 Z" fill="url(#pr-b)"/>
+          <path d="M240 0 C 220 120, 300 200, 260 340" stroke="url(#pr-r)" stroke-width="22" fill="none"/>
+        </svg>
+      </article>
+      <article class="promo-card">
+        <div class="promo-card__body">
+          <h3 class="h5">How Can We Help?</h3>
+          <div class="promo-card__cta">
+            <a class="btn-go btn-go--outline" href="#"><span class="btn-go__label">Book a Demo</span><span class="btn-go__arrow"><svg viewBox="0 0 16 16"><path d="M3 13 13 3M5.5 3H13v7.5"/></svg></span></a>
+          </div>
+        </div>
+        <svg class="promo-card__art" viewBox="0 0 420 340" aria-hidden="true">
+          <defs>
+            <linearGradient id="pr-c" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FF77E5"/><stop offset="1" stop-color="#FF2D02"/></linearGradient>
+            <linearGradient id="pr-d" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#E4EA02"/><stop offset="1" stop-color="#AADCC6"/></linearGradient>
+          </defs>
+          <path d="M180 340 L420 60 L420 340 Z" fill="url(#pr-c)"/>
+          <path d="M330 0 C 260 90, 260 210, 330 340" stroke="url(#pr-d)" stroke-width="24" fill="none"/>
+          <circle cx="392" cy="60" r="46" fill="none" stroke="url(#pr-d)" stroke-width="20"/>
+        </svg>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <div id="siteFooter"></div>
+
+  <script src="js/footer.js?v=22"></script>
+  <script src="js/main.js?v=30"></script>
+  <script src="js/transition.js?v=24"></script>
+  <script type="module" src="js/ribbons.js?v=22"></script>
+</body>
+</html>

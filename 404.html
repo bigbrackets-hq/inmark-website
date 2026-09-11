@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Page not found — InMark</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&family=Be+Vietnam+Pro:wght@400;500;600&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css?v=32" />
+  <script>document.documentElement.classList.add('pt-enter');</script>
+</head>
+<body class="page-404">
+
+  <a class="p404__logo" href="index.html" aria-label="InMark home">
+    <img src="assets/inmark-logo-dark.svg" alt="inmark" />
+  </a>
+
+  <main class="p404">
+    <svg class="p404__line" viewBox="0 0 1440 900" fill="none" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <path d="M -40 640 C 260 720, 520 540, 720 560 C 960 584, 1120 700, 1480 620" stroke="#141415" stroke-width="16" stroke-linecap="round" opacity="0.12"/>
+    </svg>
+
+    <h1 class="p404__code" aria-label="404 — page not found">
+      <span>4</span><span class="p404__zero"><img src="https://images.unsplash.com/photo-1775486101687-1950422dbca7?w=500&q=78&auto=format&fit=crop" alt="" /></span><span>4</span>
+    </h1>
+    <p class="p404__title">This page went off-brief.</p>
+    <p class="p404__sub">The link is broken, expired, or never got approved in the workbench.</p>
+    <div class="p404__cta">
+      <a class="btn-go btn-go--dark" href="index.html"><span class="btn-go__label">Back to home</span><span class="btn-go__arrow"><svg viewBox="0 0 16 16"><path d="M3 13 13 3M5.5 3H13v7.5"/></svg></span></a>
+    </div>
+
+    <svg class="p404__blob" viewBox="0 0 120 110" aria-hidden="true">
+      <path d="M60 6 C 92 6, 112 30, 112 62 C 112 96, 88 110, 60 110 C 32 110, 8 96, 8 62 C 8 30, 28 6, 60 6 Z" fill="#141415"/>
+      <circle cx="44" cy="46" r="6" fill="#E4EA02"/>
+      <circle cx="76" cy="46" r="6" fill="#E4EA02"/>
+      <path d="M46 72 Q 60 60 74 72" stroke="#E4EA02" stroke-width="5" fill="none" stroke-linecap="round"/>
+    </svg>
+  </main>
+
+  <script>
+    // the zero leans toward the cursor — small nod to the hero's pull
+    var zero = document.querySelector('.p404__zero');
+    if (matchMedia('(hover: hover)').matches && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      addEventListener('mousemove', function (e) {
+        var dx = e.clientX / innerWidth - 0.5;
+        var dy = e.clientY / innerHeight - 0.5;
+        zero.style.transform = 'translate(' + dx * 26 + 'px,' + dy * 20 + 'px) rotate(' + dx * 6 + 'deg)';
+      }, { passive: true });
+    }
+    // buttons roll like everywhere else
+    document.querySelectorAll('.btn-go__label').forEach(function (b) {
+      var t = b.textContent.trim();
+      b.innerHTML = '<span class="btn__t"><span>' + t + '</span><span aria-hidden="true">' + t + '</span></span>';
+    });
+  </script>
+  <script src="js/transition.js?v=24"></script>
+</body>
+</html>

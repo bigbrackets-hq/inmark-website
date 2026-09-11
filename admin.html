@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Inmark Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css" />
+  <link rel="stylesheet" href="css/admin.css?v=5" />
+</head>
+<body>
+  <div class="st">
+    <aside class="st__side">
+      <div class="st__brand">
+        <img src="assets/inmark-logo-icon-dark.svg" alt="" />
+        <span>Inmark <em>Studio</em></span>
+      </div>
+      <input type="search" class="st__search" id="stSearch" placeholder="Search guests…" />
+
+      <p class="st__group">Main menu</p>
+      <nav class="st__nav" id="stMain">
+        <button class="is-active" data-col="overview"><i>◈</i>Overview</button>
+        <button data-col="guestlist"><i>☰</i>Guest list</button>
+        <button data-col="qrlinks"><i>▣</i>QR codes &amp; links</button>
+        <button data-col="confirmations"><i>✓</i>Confirmations</button>
+      </nav>
+
+      <p class="st__group">Event</p>
+      <nav class="st__nav" id="stEvent">
+        <button data-col="eventcontent"><i>✎</i>Event content</button>
+      </nav>
+
+      <p class="st__group">Site pages</p>
+      <select class="st__page" id="stPage" aria-label="Choose a page">
+        <option value="home">Home page</option>
+        <option value="blog">Blog page</option>
+        <option value="site">Site</option>
+      </select>
+      <nav class="st__nav" id="stNav" style="margin-top: 8px;"></nav>
+
+      <div class="st__foot">
+        <a class="st__view" href="event/" target="_blank">View launch page ↗</a>
+        <a class="st__view" href="index.html" target="_blank">View main site ↗</a>
+        <div class="st__profile">
+          <span class="st__avatar">A</span>
+          <span class="st__who"><strong>Ashish</strong><em>Event manager</em></span>
+          <a href="#" id="stSignout" title="Sign out">⎋</a>
+        </div>
+      </div>
+    </aside>
+
+    <div class="st__main">
+      <header class="st__top">
+        <div class="st__crumb">Inmark <span>/</span> <strong id="stCrumb">Overview</strong></div>
+        <div class="st__topright">
+          <span class="st__status" id="stStatus">All changes saved</span>
+          <button class="st__publish" id="stPublish">Publish changes</button>
+        </div>
+      </header>
+      <main class="st__body" id="stBody"><!-- rendered --></main>
+    </div>
+  </div>
+  <div class="st__toast" id="stToast"></div>
+  <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.js" defer></script>
+  <script src="js/admin.js?v=9"></script>
+</body>
+</html>

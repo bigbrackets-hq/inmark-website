@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Legal — InMark</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&family=Be+Vietnam+Pro:wght@400;500;600&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css?v=32" />
+  <script>document.documentElement.classList.add('pt-enter');</script>
+  <script src="js/content-store.js?v=22"></script>
+  <script src="api/content-js"></script>
+</head>
+<body>
+
+  <header class="nav nav--solid" id="nav">
+    <div class="nav__inner">
+      <a class="nav__logo" href="index.html" aria-label="InMark home">
+        <img src="assets/inmark-logo-dark.svg" alt="inmark" />
+      </a>
+      <div class="nav__actions">
+        <a class="btn btn--dark" href="index.html#cta">Get Started</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="blogpage legal">
+    <div class="legal__wrap">
+      <nav class="legal__tabs" aria-label="Legal documents">
+        <a class="tab" data-doc="privacy" href="legal.html?d=privacy">Privacy Policy</a>
+        <a class="tab" data-doc="terms" href="legal.html?d=terms">Terms of Service</a>
+        <a class="tab" data-doc="cookies" href="legal.html?d=cookies">Cookie Policy</a>
+      </nav>
+      <p class="blogpage__eyebrow" id="legalUpdated"></p>
+      <h1 class="legal__title" id="legalTitle"></h1>
+      <div class="legal__body post__body" id="legalBody"></div>
+    </div>
+  </main>
+
+  <div id="siteFooter"></div>
+
+  <script>
+    var DOCS = {
+      privacy: {
+        title: 'Privacy Policy',
+        updated: 'Last updated · June 2026',
+        body: [
+          ['Who we are', 'InMark ("we", "us") operates a creator marketing platform that connects brands, agencies, influencers, and UGC creators, and runs campaigns from brief through payout. This policy explains what we collect, why, and the choices you have.'],
+          ['What we collect', 'Account details (name, email, business information), profile content you add (portfolio links, social handles, rates), campaign records (briefs, deliverables, approvals, payments), and usage data that helps us keep the product reliable and safe.'],
+          ['How we use it', 'To run campaigns end-to-end: matching creators to briefs, processing escrowed payments, producing campaign reports, and improving the product. We do not sell personal data. Aggregated, de-identified analytics may inform product decisions.'],
+          ['Payments', 'Campaign budgets are processed by regulated payment partners. InMark stores payout records and release decisions, not full card or bank credentials.'],
+          ['Your choices', 'You can access, correct, export, or delete your account data from settings or by contacting us. Marketing emails always include an unsubscribe link. Some records (for example, tax and payment history) are retained where the law requires.'],
+          ['Contact', 'Questions about this policy: privacy@inmark.app.']
+        ]
+      },
+      terms: {
+        title: 'Terms of Service',
+        updated: 'Last updated · June 2026',
+        body: [
+          ['The agreement', 'By creating an account or running a campaign on InMark you agree to these terms. If you use InMark on behalf of a company, you confirm you can bind that company.'],
+          ['Campaigns and escrow', 'Brands fund campaigns before work begins. Funds are held in escrow and released to creators when deliverables are explicitly approved in the workbench. Approval decisions, revisions, and releases are recorded and final once confirmed.'],
+          ['Creator content', 'Creators keep ownership of their content. Each campaign brief defines the usage rights a brand licenses, the platforms involved, and the duration. Neither side may extend usage beyond the brief without a new agreement.'],
+          ['Acceptable use', 'No misleading metrics, purchased engagement, infringing content, or off-platform payment arrangements designed to bypass escrow. We may suspend accounts that break these rules.'],
+          ['Fees', 'InMark charges a flat platform fee per funded campaign, shown in full before funding. Creator rates are set by creators; InMark adds no hidden markup.'],
+          ['Liability', 'InMark provides the platform "as is". To the extent the law allows, our liability is limited to the platform fees you paid in the twelve months before a claim.'],
+          ['Contact', 'Questions about these terms: legal@inmark.app.']
+        ]
+      },
+      cookies: {
+        title: 'Cookie Policy',
+        updated: 'Last updated · June 2026',
+        body: [
+          ['What cookies we use', 'Strictly necessary cookies keep you signed in and secure. Preference cookies remember choices like your dismissed banners. Analytics cookies help us understand which parts of the product are working, in aggregate.'],
+          ['What we do not do', 'No third-party advertising cookies, no cross-site tracking pixels, and no selling of browsing data.'],
+          ['Managing cookies', 'You can clear or block cookies in your browser settings. Blocking strictly necessary cookies will sign you out and may break campaign workflows.'],
+          ['Contact', 'Questions about cookies: privacy@inmark.app.']
+        ]
+      }
+    };
+    var key = new URLSearchParams(location.search).get('d') || 'privacy';
+    if (!DOCS[key]) key = 'privacy';
+    var doc = DOCS[key];
+    document.title = doc.title + ' — InMark';
+    document.getElementById('legalTitle').textContent = doc.title;
+    document.getElementById('legalUpdated').textContent = doc.updated;
+    document.getElementById('legalBody').innerHTML = doc.body.map(function (s) {
+      return '<h2>' + s[0] + '</h2><p>' + s[1] + '</p>';
+    }).join('');
+    document.querySelectorAll('.legal__tabs .tab').forEach(function (t) {
+      t.classList.toggle('is-active', t.dataset.doc === key);
+    });
+  </script>
+  <script src="js/footer.js?v=22"></script>
+  <script type="module" src="js/ribbons.js?v=22"></script>
+  <script src="js/transition.js?v=24"></script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog — InMark</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&family=Be+Vietnam+Pro:wght@400;500;600&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css?v=32" />
+  <script>document.documentElement.classList.add('pt-enter');</script>
+  <script src="js/content-store.js?v=22"></script>
+  <script src="api/content-js"></script>
+</head>
+<body>
+
+  <header class="nav nav--solid" id="nav">
+    <div class="nav__inner">
+      <a class="nav__logo" href="index.html" aria-label="InMark home">
+        <img src="assets/inmark-logo-dark.svg" alt="inmark" />
+      </a>
+      <nav class="nav__pill" aria-label="Primary">
+        <a href="index.html#audiences">Audiences</a>
+        <a href="index.html#features">Core Features</a>
+        <a href="index.html#agent">AI Agents</a>
+        <a href="index.html#workflow">Workflow</a>
+        <a class="is-active" href="blog.html">Blogs</a>
+        <a href="index.html#faq">FAQ</a>
+        <a href="index.html#cta">Download App</a>
+      </nav>
+      <div class="nav__actions">
+        <a class="btn btn--white" href="#">Log In</a>
+        <a class="btn btn--dark" href="index.html#cta">Get Started</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="blogpage post">
+    <article class="post__article">
+      <a class="post__back" href="blog.html">← All posts</a>
+      <p class="blog-card__meta" id="postMeta"></p>
+      <h1 class="post__title" id="postTitle"></h1>
+      <figure class="post__cover"><img id="postCover" src="" alt="" /></figure>
+      <div class="post__body" id="postBody"></div>
+    </article>
+    <div class="container post__morewrap">
+      <h2 class="h5">Keep reading</h2>
+      <div class="blogpage__grid blogpage__grid--related" id="relatedGrid"></div>
+    </div>
+  </main>
+
+  <div id="siteFooter"></div>
+
+  <script src="js/posts.js?v=10"></script>
+  <script>
+    if (window.INMARK_CONTENT && window.INMARK_CONTENT.posts && window.INMARK_CONTENT.posts.length) window.INMARK_POSTS = window.INMARK_CONTENT.posts;
+    var slug = new URLSearchParams(location.search).get('p');
+    var posts = window.INMARK_POSTS;
+    var post = posts.find(function (p) { return p.slug === slug; }) || posts[0];
+    document.title = post.title + ' — InMark';
+    document.getElementById('postMeta').textContent = post.date + '  •  ' + post.read;
+    document.getElementById('postTitle').textContent = post.title;
+    var cover = document.getElementById('postCover');
+    cover.src = post.img; cover.alt = post.title;
+    var richBody = post.body && post.body.replace(/<[^>]*>/g, '').trim()
+      ? post.body
+      : window.INMARK_POST_BODY.map(function (t) { return '<p>' + t + '</p>'; }).join('');
+    document.getElementById('postBody').innerHTML =
+      '<p class="post__lede">' + post.excerpt + '</p>' + richBody;
+    document.getElementById('relatedGrid').innerHTML = posts
+      .filter(function (p) { return p.slug !== post.slug; }).slice(0, 3)
+      .map(function (p) {
+        return '<a class="blog-card" href="blog-post.html?p=' + p.slug + '">' +
+          '<figure><img src="' + p.img + '" alt="" loading="lazy" /></figure>' +
+          '<h3>' + p.title + '</h3>' +
+          '<p class="blog-card__meta">' + p.date + ' &nbsp;•&nbsp; ' + p.read + '</p></a>';
+      }).join('');
+  </script>
+  <script src="js/footer.js?v=22"></script>
+  <script type="module" src="js/ribbons.js?v=22"></script>
+  <script src="js/transition.js?v=24"></script>
+</body>
+</html>

@@ -1,0 +1,2164 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Inmark Launch Night — You're Invited</title>
+    <meta
+      name="description"
+      content="You're invited to the official launch of Inmark. Oct 8, 2026 — The Plaza, Pulchowk, Kathmandu."
+    />
+    <meta name="robots" content="noindex" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&family=Be+Vietnam+Pro:wght@400;500;600&family=Roboto+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/styles.css?v=31" />
+    <script src="/js/content-store.js?v=22"></script>
+    <script src="/api/content-js"></script>
+    <style>
+      /* ============ Launch-event surface (inherits the site system) ============ */
+      .ev {
+        background: var(--cool-gray);
+      }
+      .ev section {
+        overflow: visible;
+      }
+
+      /* ---------- Header ---------- */
+      .evnav {
+        background: var(--ink);
+      }
+      .evnav__inner {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 30px 0 4px;
+      }
+      .evnav__inner img {
+        height: 40px;
+      }
+
+      /* ---------- Hero (dark olive) ---------- */
+      .evhero {
+        background: var(--ink);
+        color: var(--white);
+        padding: 46px 0 64px;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+      .evhero > .container {
+        position: relative;
+        z-index: 1;
+      }
+      .evhero__line {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+        pointer-events: none;
+        opacity: 0.85;
+      }
+      .evhero__line path {
+        stroke-dasharray: 1;
+        stroke-dashoffset: 1;
+      }
+      @media (prefers-reduced-motion: no-preference) {
+        .evhero__line path {
+          transition: stroke-dashoffset 2s var(--ease-expo) 0.5s;
+        }
+      }
+      body.is-ready .evhero__line path {
+        stroke-dashoffset: 0;
+      }
+      .evhero__eyebrow {
+        font-size: 16px;
+        color: rgba(255, 255, 255, 0.78);
+        margin-bottom: 12px;
+      }
+      .evhero__greet {
+        font-family: var(--font-display);
+        font-variation-settings:
+          'opsz' 96,
+          'wdth' 76;
+        font-weight: 736;
+        text-transform: uppercase;
+        letter-spacing: normal;
+        font-size: clamp(54px, 9vw, 140px);
+        line-height: 0.96;
+      }
+      .evhero__greet.is-name {
+        font-variation-settings:
+          'opsz' 96,
+          'wdth' 100;
+        font-weight: 640;
+        text-transform: none;
+        font-size: clamp(44px, 6.6vw, 100px);
+        line-height: 1.02;
+      }
+      .evhero__role {
+        margin-top: 14px;
+        font-size: 16.5px;
+        color: rgba(255, 255, 255, 0.66);
+      }
+      .evhero__cta {
+        display: flex;
+        justify-content: center;
+        margin-top: clamp(28px, 3.6vw, 44px);
+      }
+      .evhero__meta {
+        display: flex;
+        justify-content: center;
+        gap: clamp(28px, 6vw, 80px);
+        flex-wrap: wrap;
+        margin-top: 36px;
+        text-align: left;
+      }
+      .evmedia-wrap {
+        width: min(1080px, 100%);
+        margin: 44px auto 0;
+        background: linear-gradient(
+          90deg,
+          var(--pink),
+          var(--mint) 55%,
+          var(--lime)
+        );
+        border-radius: 999px;
+        padding: 6px;
+      }
+      .evmedia {
+        position: relative;
+        border-radius: 999px;
+        overflow: hidden;
+        aspect-ratio: 16 / 5;
+        background: #1d1d1e;
+      }
+      .evmedia > img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .evmedia__play {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        display: inline-flex;
+        align-items: center;
+        gap: 9px;
+        background: rgba(255, 255, 255, 0.34);
+        backdrop-filter: blur(8px);
+        color: var(--ink);
+        border-radius: 999px;
+        padding: 13px 22px;
+        font-size: 15px;
+        font-weight: 500;
+        transition:
+          transform 0.3s var(--ease-expo),
+          background-color 0.3s;
+      }
+      .evmedia__play:hover {
+        transform: translate(-50%, -50%) scale(1.05);
+        background: rgba(255, 255, 255, 0.5);
+      }
+      .evmedia__play svg {
+        width: 14px;
+        height: 14px;
+        fill: var(--ink);
+      }
+      .evmedia__play[hidden] {
+        display: none;
+      }
+      .evvideo {
+        position: fixed;
+        inset: 0;
+        z-index: 70;
+      }
+      .evvideo__veil {
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.78);
+      }
+      .evvideo__box {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: min(960px, calc(100% - 32px));
+      }
+      .evvideo video {
+        width: 100%;
+        border-radius: 18px;
+        display: block;
+        background: #000;
+      }
+      .evvideo__close {
+        position: absolute;
+        top: -46px;
+        right: 0;
+        width: 38px;
+        height: 38px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.16);
+        display: grid;
+        place-items: center;
+      }
+      .evvideo__close svg {
+        width: 15px;
+        height: 15px;
+        stroke: var(--white);
+        stroke-width: 2;
+        stroke-linecap: round;
+      }
+      .evmeta {
+        display: flex;
+        gap: 12px;
+        align-items: flex-start;
+        font-size: 14.5px;
+        line-height: 1.45;
+      }
+      .evmeta svg {
+        width: 18px;
+        height: 18px;
+        stroke: var(--white);
+        stroke-width: 1.8;
+        fill: none;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        flex: none;
+        margin-top: 2px;
+      }
+      .evmeta strong {
+        display: block;
+        font-weight: 600;
+      }
+      .evmeta span {
+        color: rgba(255, 255, 255, 0.82);
+      }
+      .evmeta a {
+        text-decoration: underline;
+        text-underline-offset: 3px;
+      }
+      .evhero__note {
+        margin-top: 26px;
+        font-size: 14.5px;
+        color: rgba(255, 255, 255, 0.62);
+      }
+      .evhero__note a {
+        color: var(--lime);
+        text-decoration: underline;
+        text-underline-offset: 3px;
+      }
+
+      /* ---------- Invitation headline ---------- */
+      .evinvite {
+        padding: clamp(64px, 9vw, 110px) 0 clamp(44px, 6vw, 70px);
+        text-align: center;
+      }
+      .evinvite__title {
+        font-family: var(--font-display);
+        font-weight: 620;
+        font-size: clamp(40px, 6.4vw, 84px);
+        line-height: 1.06;
+        max-width: 16ch;
+        margin-inline: auto;
+      }
+      .evinvite .hero__chip {
+        vertical-align: -14%;
+      }
+      .evseat {
+        display: inline-flex;
+        gap: 10px;
+        align-items: center;
+        background: var(--lime-tint);
+        border-radius: 12px;
+        padding: 12px 18px;
+        margin-top: 30px;
+        font-size: 14px;
+      }
+      .evseat svg {
+        width: 16px;
+        height: 16px;
+        stroke: var(--olive-dark);
+        stroke-width: 1.8;
+        fill: none;
+        stroke-linecap: round;
+        flex: none;
+      }
+      .evseat strong {
+        font-weight: 600;
+      }
+
+      /* ---------- When / Where bars ---------- */
+      .evbars {
+        margin-top: clamp(40px, 6vw, 70px);
+      }
+      .evbar {
+        padding: 15px 0;
+      }
+      .evbar .container {
+        display: flex;
+        align-items: baseline;
+        gap: 18px;
+        flex-wrap: wrap;
+      }
+      .evbar--label {
+        justify-content: flex-start;
+      }
+      .evbar__k {
+        font-size: 15px;
+      }
+      .evbar__v {
+        font-size: clamp(17px, 2.2vw, 22px);
+        font-weight: 600;
+      }
+      .evbar--mint {
+        background: var(--mint);
+        padding: 12px 0;
+      }
+      .evbar--pink {
+        background: var(--pink);
+      }
+      .evbar--pink .container {
+        justify-content: flex-start;
+        padding-left: clamp(20px, 8vw, 120px);
+      }
+      .evbar--lime {
+        background: var(--lime);
+      }
+      .evbar--lime .container {
+        justify-content: flex-end;
+        text-align: right;
+      }
+      .evbar--orange {
+        background: #ff8a00;
+        padding: 11px 0;
+      }
+      .evbar--red {
+        background: var(--red);
+        padding: 9px 0;
+      }
+      .evbar {
+        will-change: padding;
+      }
+
+      /* ---------- Program schedule: the landing page's conveyor ---------- */
+      .evh {
+        font-family: var(--font-display);
+        font-weight: 640;
+        letter-spacing: normal;
+        line-height: 1.08;
+      }
+      .evflow {
+        position: relative;
+        background: #330900;
+        color: var(--white);
+      }
+      .evflow__sticky {
+        position: relative;
+        overflow: hidden;
+        padding: clamp(70px, 9vw, 120px) 0;
+      }
+      .evflow__head {
+        position: relative;
+        z-index: 1;
+        text-align: center;
+        padding: 0 20px;
+        font-size: clamp(46px, 7.2vw, 112px);
+        letter-spacing: normal;
+      }
+      #flowTitle,
+      .evflow__time {
+        transition:
+          opacity 0.16s ease,
+          filter 0.18s ease;
+      }
+      .evflow__head.is-swapping #flowTitle,
+      .evflow__head.is-swapping .evflow__time {
+        opacity: 0;
+        filter: blur(12px);
+      }
+      .evflow__time {
+        display: inline-block;
+        font-family: var(--font-mono);
+        font-weight: 500;
+        font-size: 0.3em;
+        vertical-align: 0.55em;
+        margin-left: 0.28em;
+        color: rgba(255, 255, 255, 0.75);
+      }
+      .evflow__time[hidden] {
+        display: none;
+      }
+      .evflow__cards {
+        display: grid;
+        gap: 18px;
+        width: min(440px, calc(100% - 40px));
+        margin: 44px auto 0;
+      }
+      body.evflow-on .evflow {
+        height: 320vh;
+      }
+      body.evflow-on .evflow__sticky {
+        position: sticky;
+        top: 0;
+        height: 100vh;
+        height: 100svh;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      body.evflow-on .evflow__cards {
+        position: absolute;
+        inset: 0;
+        z-index: 2;
+        margin: 0;
+        width: auto;
+        display: block;
+        pointer-events: none;
+        perspective: 1900px;
+        perspective-origin: 50% 40%;
+      }
+      body.evflow-on .evcard {
+        position: absolute;
+        top: 0;
+        left: 0;
+        visibility: hidden;
+        width: clamp(340px, 33vw, 500px);
+        transform-origin: 50% 50%;
+      }
+      .evcard {
+        width: 100%;
+        border-radius: 20px;
+        padding: 22px 24px 26px;
+        color: var(--ink);
+        box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+      }
+      .evcard__img {
+        width: 100%;
+        aspect-ratio: 16 / 8;
+        object-fit: cover;
+        border-radius: 12px;
+        margin-bottom: 18px;
+      }
+      .evcard__top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 14px;
+      }
+      .evcard__n {
+        display: grid;
+        place-items: center;
+        width: 34px;
+        height: 34px;
+        border-radius: 999px;
+        border: 1.5px solid currentColor;
+        font-family: var(--font-mono);
+        font-size: 13px;
+      }
+      .evcard__time {
+        font-family: var(--font-mono);
+        font-size: 16px;
+        font-weight: 500;
+      }
+      .evcard__t {
+        font-size: clamp(21px, 1.8vw, 26px);
+        font-weight: 600;
+      }
+      .evcard__d {
+        margin-top: 7px;
+        font-size: 14.5px;
+        opacity: 0.78;
+      }
+      .evcard--lime {
+        background: var(--lime);
+      }
+      .evcard--coral {
+        background: #f1684a;
+        color: #330900;
+      }
+      .evcard--pink {
+        background: var(--pink);
+        color: #33182e;
+      }
+      .evcard--mint {
+        background: var(--mint);
+        color: #0e3f2a;
+      }
+
+      /* ---------- Countdown ---------- */
+      .evcount {
+        background: #ffd1f2;
+        padding: clamp(80px, 11vw, 150px) 0;
+        text-align: center;
+      }
+      .evcount__title {
+        font-size: clamp(34px, 6.2vw, 72px);
+        max-width: 21ch;
+        margin: 0 auto;
+        color: var(--ink);
+      }
+      .evcount__title .stk {
+        display: inline-block;
+        width: 0.92em;
+        height: 0.92em;
+        vertical-align: -10%;
+        margin: 0 0.06em;
+      }
+      .evcount__cta {
+        margin-top: 40px;
+        display: flex;
+        justify-content: center;
+      }
+
+      /* ---------- FAQ tweaks (single list, no tabs) ---------- */
+      .ev .faq {
+        padding-top: clamp(70px, 9vw, 120px);
+      }
+
+      /* ---------- Join us (inline registration) ---------- */
+      .evjoin {
+        background: #330900;
+        padding: clamp(70px, 9vw, 120px) 0;
+      }
+      .evjoin__head {
+        font-family: var(--font-display);
+        font-variation-settings:
+          'opsz' 96,
+          'wdth' 76;
+        font-weight: 736;
+        text-transform: uppercase;
+        letter-spacing: normal;
+        line-height: 0.96;
+        text-align: center;
+        color: var(--white);
+        font-size: clamp(44px, 6.6vw, 96px);
+        margin-bottom: clamp(34px, 4.5vw, 56px);
+      }
+      .evjoin__sub {
+        text-align: center;
+        color: rgba(255, 255, 255, 0.72);
+        font-size: 16px;
+        max-width: 52ch;
+        margin: -18px auto 40px;
+      }
+      .evform > *,
+      .evform .row2 > label {
+        transition: opacity 0.3s ease;
+      }
+      .evform:focus-within > *:not(:focus-within):not(.hp):not(.everr) {
+        opacity: 0.35;
+      }
+      .evform:focus-within .row2:focus-within > label:not(:focus-within) {
+        opacity: 0.35;
+      }
+      .evform label:focus-within input,
+      .evform label:focus-within select {
+        border-color: var(--ink);
+      }
+      .evjoin__panel {
+        background: var(--white);
+        border-radius: 28px;
+        padding: clamp(26px, 4.5vw, 48px);
+        width: min(920px, 100%);
+        margin: 0 auto;
+      }
+      .evjoin .lead {
+        margin-top: 8px;
+        font-size: 14.5px;
+        color: #6a6a6e;
+      }
+      .evform {
+        display: grid;
+        gap: 14px;
+        margin-top: 22px;
+      }
+      .evform label {
+        display: grid;
+        gap: 7px;
+        font-size: 13px;
+        font-weight: 500;
+      }
+      .evform input {
+        font: inherit;
+        border: 1.5px solid #e2e2e4;
+        border-radius: 13px;
+        padding: 13px 16px;
+        outline: none;
+        transition: border-color 0.25s;
+        width: 100%;
+      }
+      .evform input:focus {
+        border-color: var(--ink);
+      }
+      .evopt {
+        display: flex;
+        gap: 14px;
+        align-items: flex-start;
+        background: var(--lime-tint);
+        border-radius: 16px;
+        padding: 16px;
+        cursor: pointer;
+      }
+      .evopt input {
+        width: auto;
+        margin-top: 3px;
+        accent-color: var(--olive-dark);
+        transform: scale(1.25);
+      }
+      .evopt strong {
+        display: block;
+        font-size: 14.5px;
+        font-weight: 600;
+      }
+      .evopt span {
+        display: block;
+        font-size: 13px;
+        color: #55561e;
+        margin-top: 3px;
+      }
+      .evform .btn-go {
+        justify-content: center;
+        width: 100%;
+      }
+      .evform .btn-go[disabled] {
+        opacity: 0.55;
+        cursor: wait;
+      }
+      .everr {
+        display: none;
+        color: var(--red);
+        font-size: 13.5px;
+      }
+      .everr.is-on {
+        display: block;
+      }
+      .hp {
+        position: absolute;
+        left: -9999px;
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      /* face capture step */
+      .evface {
+        display: none;
+      }
+      .evface video,
+      .evface img.snap {
+        width: 100%;
+        aspect-ratio: 1;
+        object-fit: cover;
+        border-radius: 18px;
+        background: var(--ink);
+        margin-top: 18px;
+        transform: scaleX(-1);
+      }
+      .evface img.snap {
+        transform: none;
+      }
+      .evface__row {
+        display: flex;
+        gap: 10px;
+        margin-top: 16px;
+        flex-wrap: wrap;
+      }
+      .evface__row .btn-go {
+        flex: 1;
+        justify-content: center;
+      }
+      .evface__hint {
+        margin-top: 12px;
+        font-size: 13px;
+        color: #6a6a6e;
+      }
+      /* done step */
+      .evdone {
+        display: none;
+        text-align: center;
+        padding: 12px 0 6px;
+      }
+      .evdone .tick {
+        display: grid;
+        place-items: center;
+        width: 54px;
+        height: 54px;
+        border-radius: 999px;
+        background: var(--lime);
+        margin: 0 auto 16px;
+      }
+      .evdone .tick svg {
+        width: 22px;
+        height: 22px;
+        stroke: var(--ink);
+        stroke-width: 2.4;
+        fill: none;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      .evdone p {
+        margin-top: 8px;
+        font-size: 14.5px;
+        color: #6a6a6e;
+      }
+      .evjoin__panel[data-step='form'] .evform {
+        display: grid;
+      }
+      .evjoin__panel[data-step='face'] .evform,
+      .evjoin__panel[data-step='done'] .evform {
+        display: none;
+      }
+      .evjoin__panel[data-step='face'] .evface {
+        display: block;
+      }
+      .evjoin__panel[data-step='done'] .evdone {
+        display: block;
+      }
+      .evform .row2 {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+      }
+      .evform select {
+        font: inherit;
+        border: 1.5px solid #e2e2e4;
+        border-radius: 13px;
+        padding: 13px 40px 13px 16px;
+        outline: none;
+        width: 100%;
+        -webkit-appearance: none;
+        appearance: none;
+        background: var(--white)
+          url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4 6.5 8 10l4-3.5' stroke='%23141415' stroke-width='1.6' fill='none' stroke-linecap='round'/%3E%3C/svg%3E")
+          no-repeat right 14px center / 14px;
+      }
+      .evform select:focus {
+        border-color: var(--ink);
+      }
+
+      /* ---------- Congrats modal ---------- */
+      .evcongrats {
+        position: fixed;
+        inset: 0;
+        z-index: 80;
+        display: none;
+      }
+      .evcongrats.is-open {
+        display: block;
+      }
+      .evcongrats__veil {
+        position: absolute;
+        inset: 0;
+        background: rgba(10, 10, 10, 0.6);
+        backdrop-filter: blur(5px);
+      }
+      .evcongrats__card {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: min(80vw, 1100px);
+        height: min(80vh, 760px);
+        background: var(--white);
+        border-radius: 30px;
+        overflow: hidden;
+        display: grid;
+        place-items: center;
+        text-align: center;
+        padding: clamp(26px, 5vw, 60px);
+      }
+      @media (max-width: 760px) {
+        .evcongrats__card {
+          width: calc(100vw - 28px);
+          height: min(84vh, 700px);
+        }
+      }
+      .evcongrats__canvas {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+      }
+      .evcongrats__close {
+        position: absolute;
+        top: 18px;
+        right: 18px;
+        width: 42px;
+        height: 42px;
+        border-radius: 999px;
+        background: var(--cool-gray);
+        display: grid;
+        place-items: center;
+        z-index: 2;
+      }
+      .evcongrats__close svg {
+        width: 16px;
+        height: 16px;
+        stroke: var(--ink);
+        stroke-width: 2;
+        stroke-linecap: round;
+      }
+      .evcongrats__body {
+        position: relative;
+        z-index: 1;
+        max-width: 60ch;
+      }
+      .evcongrats__tick {
+        display: grid;
+        place-items: center;
+        width: 64px;
+        height: 64px;
+        border-radius: 999px;
+        background: var(--lime);
+        margin: 0 auto 22px;
+      }
+      .evcongrats__tick svg {
+        width: 26px;
+        height: 26px;
+        stroke: var(--ink);
+        stroke-width: 2.4;
+        fill: none;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      .evcongrats__title {
+        font-family: var(--font-display);
+        font-variation-settings:
+          'opsz' 96,
+          'wdth' 76;
+        font-weight: 736;
+        text-transform: uppercase;
+        line-height: 0.98;
+        font-size: clamp(34px, 5vw, 72px);
+      }
+      .evcongrats__sub {
+        margin-top: 16px;
+        font-size: 16.5px;
+        color: #55555a;
+        max-width: 46ch;
+        margin-inline: auto;
+      }
+      .evcongrats__ctas {
+        display: flex;
+        gap: 12px;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-top: 32px;
+      }
+
+      /* ---------- Reveal ---------- */
+      body.is-loading {
+        overflow: hidden;
+      }
+      @media (prefers-reduced-motion: no-preference) {
+        .rv {
+          opacity: 0;
+          transform: translateY(22px);
+          transition:
+            opacity 0.55s ease,
+            transform 0.8s var(--ease-expo);
+        }
+        .rv.is-in {
+          opacity: 1;
+          transform: none;
+        }
+      }
+
+      /* ---------- Responsive ---------- */
+      @media (max-width: 760px) {
+        .evhero__side {
+          text-align: left;
+          justify-items: start;
+        }
+        .evbanner {
+          border-radius: 100px 24px 24px 100px;
+          flex-direction: column;
+          gap: 22px;
+        }
+        .evbanner__meta {
+          min-width: 0;
+        }
+        .evbar--pink .container,
+        .evbar--lime .container {
+          padding-left: 0;
+          justify-content: flex-start;
+          text-align: left;
+        }
+        .evmedia {
+          aspect-ratio: 16 / 9;
+        }
+        .evhero__meta {
+          flex-direction: column;
+          align-items: center;
+          gap: 18px;
+        }
+        .ev .faq__grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body class="ev">
+    <!--
+THESIS: A personalized digital invitation and the event's own website in one — each guest's unique
+QR opens the page addressed to them by name; the page carries the welcome, the programme as a
+scroll deck, a live countdown, and free registration with optional Face ID entry. Refuses the
+conference-microsite default (speaker grids, sponsor walls).
+OWN-WORLD: Inmark's system — dark olive and brick grounds, condensed Bricolage caps beside
+sentence-case display, lime/pink/coral/mint card tones, the orange gradient welcome banner,
+mono time labels, shared site buttons, FAQ and footer.
+STORY: Guest scans their card's QR → greeted by name → reads when/where → scrolls the programme
+deck → feels the countdown → confirms attendance (name, organization, optional Face ID via
+ThirdFactor) → "You're on the list."
+FIRST VIEWPORT: dark olive hero — "Dear {name}," left, Confirm Attendance lime pill right, the
+orange welcome banner with date/venue meta below.
+FORM: single-scroll event site, pinned by the provided design mock.
+FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the
+verdict, and DESIGN.md.
+-->
+
+    <!-- ============ PRELOADER (the landing page's ceremony) ============ -->
+    <div class="loader" id="loader" aria-hidden="true">
+      <div class="text-loop text-loop--loader" id="creatorLoop">
+        <svg
+          class="text-loop-svg"
+          viewBox="0 0 1200 300"
+          preserveAspectRatio="xMidYMid meet"
+          aria-hidden="true"
+        >
+          <defs>
+            <linearGradient
+              id="loop-grad"
+              gradientUnits="userSpaceOnUse"
+              x1="0"
+              y1="150"
+              x2="1200"
+              y2="150"
+            >
+              <stop offset="0" stop-color="#AADCC6" />
+              <stop offset="0.3" stop-color="#E4EA02" />
+              <stop offset="0.62" stop-color="#FF2D02" />
+              <stop offset="1" stop-color="#FF77E5" />
+            </linearGradient>
+          </defs>
+          <path
+            id="loopPath"
+            d="M -320 150 Q -160 52 0 150 T 320 150 T 640 150 T 960 150 T 1280 150 T 1600 150"
+            fill="none"
+            stroke="url(#loop-grad)"
+            stroke-width="78"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <text class="text-loop-measure" id="loopMeasure"></text>
+          <text class="text-loop-text">
+            <textPath
+              id="loopHead"
+              href="#loopPath"
+              lengthAdjust="spacing"
+            ></textPath>
+          </text>
+          <text class="text-loop-text">
+            <textPath
+              id="loopTail"
+              href="#loopPath"
+              lengthAdjust="spacing"
+            ></textPath>
+          </text>
+        </svg>
+      </div>
+      <div class="loader__inner">
+        <img class="loader__logo" src="/assets/inmark-logo-dark.svg" alt="" />
+      </div>
+      <div class="loader__count"><span id="loaderCount">0</span></div>
+    </div>
+    <script>
+      document.body.classList.add('is-loading');
+    </script>
+    <script
+      src="/js/loader.js?v=1"
+      data-loader-key="inmark-event-loaded"
+    ></script>
+
+    <header class="evnav">
+      <div class="container evnav__inner">
+        <a href="/event/"
+          ><img src="/assets/inmark-logo-light.svg" alt="inmark"
+        /></a>
+      </div>
+    </header>
+
+    <section class="evhero">
+      <svg
+        class="evhero__line"
+        viewBox="0 0 1440 760"
+        fill="none"
+        preserveAspectRatio="xMidYMid slice"
+        aria-hidden="true"
+      >
+        <defs>
+          <linearGradient
+            id="evline-grad"
+            x1="0"
+            y1="380"
+            x2="1440"
+            y2="380"
+            gradientUnits="userSpaceOnUse"
+          >
+            <stop offset="0" stop-color="#AADCC6" />
+            <stop offset="0.33" stop-color="#E4EA02" />
+            <stop offset="0.66" stop-color="#FF2D02" />
+            <stop offset="1" stop-color="#FF77E5" />
+          </linearGradient>
+        </defs>
+        <path
+          pathLength="1"
+          d="M-60 150 C 160 130, 260 200, 340 262 C 420 324, 380 420, 520 448 C 680 480, 830 420, 980 380 C 1120 343, 1180 250, 1268 200 C 1340 160, 1400 168, 1500 180"
+          stroke="url(#evline-grad)"
+          stroke-width="14"
+          stroke-linecap="round"
+        />
+      </svg>
+      <div class="container">
+        <p class="evhero__eyebrow rv" id="greetEyebrow" hidden>
+          You are invited to experience the launch of our premium product
+        </p>
+        <h1 class="evhero__greet rv" id="greet">Launch Night</h1>
+        <p class="evhero__role rv" id="greetRole" hidden></p>
+        <div class="evhero__cta rv">
+          <a class="btn-go btn-go--lime" href="#join"
+            ><span class="btn-go__label">Confirm Attendance</span
+            ><span class="btn-go__arrow"
+              ><svg viewBox="0 0 16 16">
+                <path d="M3 13 13 3M5.5 3H13v7.5" /></svg></span
+          ></a>
+        </div>
+
+        <div class="evhero__meta rv">
+          <div class="evmeta">
+            <svg viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="9" />
+              <path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18" />
+            </svg>
+            <div>
+              <strong id="metaDate">—</strong><span>Kathmandu, Nepal</span>
+            </div>
+          </div>
+          <div class="evmeta">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M4 9V7a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v2a2.5 2.5 0 0 0 0 6v2a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-2a2.5 2.5 0 0 0 0-6zM14 6v2M14 11v2M14 16v2"
+              />
+            </svg>
+            <div><strong>In Person</strong><span>Event</span></div>
+          </div>
+          <div class="evmeta">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M9 20l-5.5-2.5v-13L9 7l6-2.5L20.5 7v13L15 17.5 9 20zM9 7v13M15 4.5v13"
+              />
+            </svg>
+            <div>
+              <a id="metaMap" target="_blank" rel="noopener" href="#"
+                ><strong
+                  id="metaVenue"
+                  style="text-decoration: underline; text-underline-offset: 3px"
+                  >—</strong
+                ></a
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="evmedia-wrap rv">
+          <div class="evmedia">
+            <img
+              src="/assets/launch-video.jpg"
+              alt=""
+              onerror="
+                this.src = '/assets/launch video.png';
+                this.onerror = function () {
+                  this.src =
+                    'https://images.unsplash.com/photo-1626548799742-a0571db19f16?w=1400&q=65&auto=format&fit=crop';
+                  this.onerror = null;
+                };
+              "
+            />
+            <button class="evmedia__play" id="playBtn" hidden>
+              <svg viewBox="0 0 16 16"><path d="M4 2.5v11l9-5.5z" /></svg>Play
+              Video
+            </button>
+          </div>
+        </div>
+
+        <p class="evhero__note rv">
+          Registration is open and free. Visit our <a href="#faq">FAQs</a> for
+          more information.
+        </p>
+      </div>
+    </section>
+
+    <section class="evinvite">
+      <div class="container">
+        <h2 class="evinvite__title rv">
+          You're
+          <span class="hero__chip"
+            ><img
+              src="https://images.unsplash.com/photo-1775486101687-1950422dbca7?w=300&q=78&auto=format&fit=crop"
+              alt=""
+          /></span>
+          invited to the official launch of Inmark
+        </h2>
+        <div class="evseat rv">
+          <svg viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="9" />
+            <path d="M12 8v5M12 16.5v.01" />
+          </svg>
+          <span
+            >Guests are kindly requested to be
+            <strong>seated by 18:40</strong> in the event
+            <strong>Ballrooms 2 &amp; 3</strong>.</span
+          >
+        </div>
+      </div>
+    </section>
+
+    <div class="evbars">
+      <div class="evbar evbar--mint" aria-hidden="true"></div>
+      <div class="evbar evbar--pink">
+        <div class="container">
+          <span class="evbar__k">When</span
+          ><span class="evbar__v" id="barWhen">—</span>
+        </div>
+      </div>
+      <div class="evbar evbar--lime">
+        <div class="container">
+          <span class="evbar__k">Where</span
+          ><span class="evbar__v" id="barWhere">—</span>
+        </div>
+      </div>
+      <div class="evbar evbar--orange" aria-hidden="true"></div>
+      <div class="evbar evbar--red" aria-hidden="true"></div>
+    </div>
+
+    <section class="evflow" id="evflow">
+      <div class="evflow__sticky">
+        <h2 class="evh evflow__head" id="flowHead">
+          <span id="flowTitle">The program schedule</span
+          ><span class="evflow__time" id="flowTime" hidden></span>
+        </h2>
+        <div class="evflow__cards" id="evflowCards">
+          <article class="evcard evcard--lime">
+            <img
+              class="evcard__img"
+              src="https://images.unsplash.com/photo-1626548799742-a0571db19f16?w=700&q=70&auto=format&fit=crop"
+              alt=""
+              loading="lazy"
+            />
+            <div class="evcard__top">
+              <span class="evcard__n">1</span
+              ><span class="evcard__time">17:25</span>
+            </div>
+            <h3 class="evcard__t">Registration desk opens</h3>
+            <p class="evcard__d">
+              Check in with your invitation QR at the desk.
+            </p>
+          </article>
+          <article class="evcard evcard--coral">
+            <img
+              class="evcard__img"
+              src="https://images.unsplash.com/photo-1653479210318-b6f3421dc171?w=700&q=70&auto=format&fit=crop"
+              alt=""
+              loading="lazy"
+            />
+            <div class="evcard__top">
+              <span class="evcard__n">2</span
+              ><span class="evcard__time">17:55</span>
+            </div>
+            <h3 class="evcard__t">Sign-up booth opens</h3>
+            <p class="evcard__d">
+              Get your Inmark account created on the spot.
+            </p>
+          </article>
+          <article class="evcard evcard--pink">
+            <img
+              class="evcard__img"
+              src="https://images.unsplash.com/photo-1571401835393-8c5f35328320?w=700&q=70&auto=format&fit=crop"
+              alt=""
+              loading="lazy"
+            />
+            <div class="evcard__top">
+              <span class="evcard__n">3</span
+              ><span class="evcard__time">18:25</span>
+            </div>
+            <h3 class="evcard__t">Hall entry opens</h3>
+            <p class="evcard__d">
+              Please be seated by 18:40 in Ballrooms 2 &amp; 3.
+            </p>
+          </article>
+          <article class="evcard evcard--mint">
+            <img
+              class="evcard__img"
+              src="https://images.unsplash.com/photo-1775486101687-1950422dbca7?w=700&q=70&auto=format&fit=crop"
+              alt=""
+              loading="lazy"
+            />
+            <div class="evcard__top">
+              <span class="evcard__n">4</span
+              ><span class="evcard__time">18:45</span>
+            </div>
+            <h3 class="evcard__t">Inmark launch ceremony</h3>
+            <p class="evcard__d">The stage programme. Inmark goes live.</p>
+          </article>
+          <article class="evcard evcard--lime">
+            <img
+              class="evcard__img"
+              src="https://images.unsplash.com/photo-1644562302947-80374ee15e46?w=700&q=70&auto=format&fit=crop"
+              alt=""
+              loading="lazy"
+            />
+            <div class="evcard__top">
+              <span class="evcard__n">5</span
+              ><span class="evcard__time">19:25</span>
+            </div>
+            <h3 class="evcard__t">Dinner served</h3>
+            <p class="evcard__d">An evening of food and conversation.</p>
+          </article>
+          <article class="evcard evcard--coral">
+            <img
+              class="evcard__img"
+              src="https://images.unsplash.com/photo-1653104623027-38aad029cca9?w=700&q=70&auto=format&fit=crop"
+              alt=""
+              loading="lazy"
+            />
+            <div class="evcard__top">
+              <span class="evcard__n">6</span
+              ><span class="evcard__time">21:25</span>
+            </div>
+            <h3 class="evcard__t">Conclusion of programme</h3>
+            <p class="evcard__d">Thank you for celebrating with us.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ Join us / registration ============ -->
+    <section class="evjoin" id="join">
+      <div class="container">
+        <h2 class="evjoin__head rv">Confirm your attendance</h2>
+        <p class="evjoin__sub rv">
+          We might want to ask you to opt in for face attendance if you are
+          comfortable, and it will be easier later.
+        </p>
+        <div class="evjoin__panel rv" id="joinPanel" data-step="form">
+          <form class="evform" id="rsvpForm" novalidate>
+            <div class="row2">
+              <label
+                >Full name
+                <input
+                  type="text"
+                  name="name"
+                  autocomplete="name"
+                  placeholder="Enter your full name"
+                  required
+                />
+              </label>
+              <label
+                >Organization
+                <input
+                  type="text"
+                  name="org"
+                  autocomplete="organization"
+                  placeholder="Company or organization"
+                />
+              </label>
+            </div>
+            <div class="row2">
+              <label
+                >Phone or email
+                <input
+                  type="text"
+                  name="contact"
+                  autocomplete="tel"
+                  placeholder="Enter your phone number or email id"
+                />
+              </label>
+              <label
+                >No. of seats
+                <select name="seats">
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                </select>
+              </label>
+            </div>
+            <label class="evopt">
+              <input type="checkbox" name="faceOptIn" />
+              <span
+                ><strong>Opt in for Face ID entry</strong>
+                <span
+                  >Skip the queue on the night: a quick face capture now,
+                  verified at the door by ThirdFactor.</span
+                ></span
+              >
+            </label>
+            <input
+              class="hp"
+              type="text"
+              name="website"
+              tabindex="-1"
+              autocomplete="off"
+            />
+            <p class="everr" id="rsvpErr"></p>
+            <button
+              class="btn-go btn-go--dark"
+              type="submit"
+              id="rsvpBtn"
+              style="justify-content: center; width: 100%"
+            >
+              <span class="btn-go__label">Confirm Attendance</span
+              ><span class="btn-go__arrow"
+                ><svg viewBox="0 0 16 16">
+                  <path d="M3 13 13 3M5.5 3H13v7.5" /></svg
+              ></span>
+            </button>
+          </form>
+
+          <div class="evface">
+            <p class="lead" style="margin-top: 4px">
+              Look straight at the camera in good light, then capture.
+            </p>
+            <video id="faceVideo" autoplay playsinline muted></video>
+            <img
+              class="snap"
+              id="faceSnap"
+              src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+              alt=""
+              hidden
+            />
+            <p class="everr" id="faceErr"></p>
+            <div class="evface__row">
+              <button class="btn-go btn-go--lime" id="faceCapture">
+                <span class="btn-go__label">Capture</span
+                ><span class="btn-go__arrow"
+                  ><svg viewBox="0 0 16 16">
+                    <circle cx="8" cy="8" r="5.5" /></svg
+                ></span>
+              </button>
+              <button
+                class="btn-go btn-go--white"
+                id="faceSkip"
+                type="button"
+                style="border: 1.5px solid #e2e2e4"
+              >
+                <span class="btn-go__label">Skip for now</span
+                ><span class="btn-go__arrow"
+                  ><svg viewBox="0 0 16 16">
+                    <path d="M3 8h10M9 4l4 4-4 4" /></svg
+                ></span>
+              </button>
+            </div>
+            <p class="evface__hint">
+              Your photo is used only to create your Face ID entry pass for this
+              event.
+            </p>
+          </div>
+
+          <div class="evdone">
+            <span class="tick"
+              ><svg viewBox="0 0 24 24"><path d="M4.5 12.5l5 5L19.5 7" /></svg
+            ></span>
+            <h3
+              id="doneTitle"
+              style="
+                font-family: var(--font-display);
+                font-weight: 640;
+                font-size: 27px;
+                line-height: 1.1;
+              "
+            >
+              You're on the list.
+            </h3>
+            <p id="doneSub">
+              See you on Sep 23. Doors open 17:25; please be seated by 18:40.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="evcount">
+      <div class="container">
+        <h2 class="evcount__title evh rv">
+          The
+          <svg class="stk" viewBox="0 0 120 110" aria-hidden="true">
+            <path
+              d="M60 6 C 92 6, 112 30, 112 62 C 112 96, 88 110, 60 110 C 32 110, 8 96, 8 62 C 8 30, 28 6, 60 6 Z"
+              fill="#35C09B"
+            />
+            <circle cx="44" cy="46" r="6" fill="#0D0D0D" />
+            <circle cx="76" cy="46" r="6" fill="#0D0D0D" />
+            <path
+              d="M42 72 Q60 88 78 72"
+              stroke="#0D0D0D"
+              stroke-width="5"
+              fill="none"
+              stroke-linecap="round"
+            />
+          </svg>
+          official launch of Inmark starts in
+          <span id="cdown">—</span>
+          <svg class="stk" viewBox="0 0 120 120" aria-hidden="true">
+            <g fill="#FF8A00">
+              <circle cx="60" cy="22" r="17" />
+              <circle cx="94" cy="42" r="17" />
+              <circle cx="94" cy="78" r="17" />
+              <circle cx="60" cy="98" r="17" />
+              <circle cx="26" cy="78" r="17" />
+              <circle cx="26" cy="42" r="17" />
+            </g>
+            <circle cx="60" cy="60" r="24" fill="#FFD84D" />
+            <circle cx="51" cy="55" r="4.5" fill="#0D0D0D" />
+            <circle cx="69" cy="55" r="4.5" fill="#0D0D0D" />
+            <path
+              d="M48 68 Q60 79 72 68"
+              stroke="#0D0D0D"
+              stroke-width="4.5"
+              fill="none"
+              stroke-linecap="round"
+            />
+          </svg>
+        </h2>
+        <div class="evcount__cta rv">
+          <a
+            class="btn-go btn-go--dark"
+            id="countMapBtn"
+            target="_blank"
+            rel="noopener"
+            href="#"
+            ><span class="btn-go__label">Open Location in Maps</span
+            ><span class="btn-go__arrow"
+              ><svg viewBox="0 0 16 16">
+                <path d="M3 13 13 3M5.5 3H13v7.5" /></svg></span
+          ></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="faq" id="faq">
+      <div class="container faq__grid">
+        <div class="faq__left">
+          <h2 class="evh" style="font-size: clamp(32px, 4.4vw, 60px)">
+            Frequently<br />asked questions
+          </h2>
+        </div>
+        <div class="faq__list" id="faqList"></div>
+      </div>
+    </section>
+
+    <div id="siteFooter"></div>
+
+    <!-- ============ Confirmation modal ============ -->
+    <div
+      class="evcongrats"
+      id="congrats"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="cgTitle"
+    >
+      <div class="evcongrats__veil" data-cg-close></div>
+      <div class="evcongrats__card">
+        <canvas class="evcongrats__canvas" id="cgCanvas"></canvas>
+        <button class="evcongrats__close" data-cg-close aria-label="Close">
+          <svg viewBox="0 0 16 16"><path d="M3 3l10 10M13 3L3 13" /></svg>
+        </button>
+        <div class="evcongrats__body">
+          <span class="evcongrats__tick"
+            ><svg viewBox="0 0 24 24"><path d="M4.5 12.5l5 5L19.5 7" /></svg
+          ></span>
+          <h3 class="evcongrats__title" id="cgTitle">You're confirmed!</h3>
+          <p class="evcongrats__sub" id="cgSub">
+            Thank you for registering. See you on Sep 23 — doors open 17:25,
+            please be seated by 18:40 in Ballrooms 2 &amp; 3.
+          </p>
+          <div class="evcongrats__ctas">
+            <button class="btn-go btn-go--lime" id="cgCal">
+              <span class="btn-go__label">Add to calendar</span
+              ><span class="btn-go__arrow"
+                ><svg viewBox="0 0 16 16">
+                  <path d="M3 13 13 3M5.5 3H13v7.5" /></svg
+              ></span>
+            </button>
+            <a
+              class="btn-go btn-go--white"
+              href="/"
+              style="border: 1.5px solid #e2e2e4"
+              ><span class="btn-go__label">Know about Inmark</span
+              ><span class="btn-go__arrow"
+                ><svg viewBox="0 0 16 16">
+                  <path d="M3 13 13 3M5.5 3H13v7.5" /></svg></span
+            ></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      /* ============ EVENT FACTS ============ */
+      var EVENT = {
+        dateLabel: 'Wednesday, 23 Sep 2026',
+        dateShort: 'Sep 23, 2026',
+        venue: 'The Plaza, Pulchowk (Ballrooms 2 & 3)',
+        venueMetaTop: 'The Plaza, Pulchowk',
+        mapUrl:
+          'https://maps.google.com/?q=The+Plaza+Pulchowk+Lalitpur' /* confirm exact pin */,
+        start: '2026-09-23T17:25:00+05:45',
+        end: '2026-09-23T21:25:00+05:45',
+        videoUrl:
+          '' /* drop a teaser .mp4 URL here to enable the Play Video button */,
+      };
+      /* Studio-published overrides (window.INMARK_CONTENT.event) win over the defaults */
+      (function () {
+        var o = window.INMARK_CONTENT && window.INMARK_CONTENT.event;
+        if (!o) return;
+        [
+          'dateLabel',
+          'dateShort',
+          'venue',
+          'mapUrl',
+          'start',
+          'end',
+          'videoUrl',
+        ].forEach(function (k) {
+          if (o[k] != null && o[k] !== '') EVENT[k] = o[k];
+        });
+        if (o.videoUrl != null) EVENT.videoUrl = o.videoUrl;
+        if (o.eyebrow)
+          document.getElementById('greetEyebrow').textContent = o.eyebrow;
+        if (o.genericTitle)
+          document.getElementById('greet').textContent = o.genericTitle;
+        if (o.seatNote) {
+          var sn = document.querySelector('.evseat span');
+          if (sn) sn.textContent = o.seatNote;
+        }
+      })();
+      document.getElementById('metaDate').textContent = EVENT.dateShort;
+      document.getElementById('metaVenue').textContent =
+        EVENT.venueMetaTop + ' (Ballrooms 2 & 3)';
+      document.getElementById('barWhen').textContent = EVENT.dateLabel;
+      document.getElementById('barWhere').textContent = EVENT.venue;
+      ['countMapBtn', 'metaMap'].forEach(function (id) {
+        document.getElementById(id).href = EVENT.mapUrl;
+      });
+
+      /* ============ Personalization (unique invite links: ?i=CODE) ============ */
+      var GUEST = null;
+      var CODE = new URLSearchParams(location.search).get('i') || '';
+      try {
+        if (!CODE) CODE = localStorage.getItem('inmark-event-code') || '';
+      } catch (e) {}
+      if (CODE) {
+        fetch('/api/guest?c=' + encodeURIComponent(CODE))
+          .then(function (r) {
+            return r.json();
+          })
+          .then(function (j) {
+            if (!j || !j.ok) return;
+            GUEST = j;
+            try {
+              localStorage.setItem('inmark-event-code', CODE);
+            } catch (e) {}
+            if (j.name) {
+              var g = document.getElementById('greet');
+              g.textContent = j.name;
+              g.classList.add('is-name');
+              document.getElementById('greetEyebrow').hidden = false;
+              document.title = 'Inmark Launch Night — ' + j.name;
+            }
+            var roleLine = [j.role, j.org].filter(Boolean).join(' | ');
+            if (roleLine) {
+              var rl = document.getElementById('greetRole');
+              rl.textContent = roleLine;
+              rl.hidden = false;
+            }
+            var f = document.getElementById('rsvpForm');
+            if (j.name) f.name.value = j.name;
+            if (j.org) f.org.value = j.org;
+            if (j.rsvped && window.markAlreadyConfirmed)
+              window.markAlreadyConfirmed(j.name || '');
+          })
+          .catch(function () {});
+      }
+
+      /* ============ Teaser video ============ */
+      (function () {
+        var btn = document.getElementById('playBtn');
+        if (!btn || !EVENT.videoUrl) return;
+        btn.hidden = false;
+        btn.addEventListener('click', function () {
+          var wrap = document.createElement('div');
+          wrap.className = 'evvideo';
+          wrap.innerHTML =
+            '<div class="evvideo__veil"></div><div class="evvideo__box">' +
+            '<button class="evvideo__close" aria-label="Close"><svg viewBox="0 0 16 16"><path d="M3 3l10 10M13 3L3 13"/></svg></button>' +
+            '<video controls autoplay playsinline src="' +
+            EVENT.videoUrl +
+            '"></video></div>';
+          document.body.appendChild(wrap);
+          function kill() {
+            wrap.querySelector('video').pause();
+            wrap.remove();
+          }
+          wrap.querySelector('.evvideo__veil').addEventListener('click', kill);
+          wrap.querySelector('.evvideo__close').addEventListener('click', kill);
+        });
+      })();
+
+      /* ============ Countdown ============ */
+      (function () {
+        var el = document.getElementById('cdown');
+        var start = new Date(EVENT.start).getTime();
+        var end = new Date(EVENT.end).getTime();
+        function tick() {
+          var now = Date.now();
+          if (now >= end) {
+            el.parentElement.innerHTML =
+              'The official launch of Inmark — thank you for celebrating with us';
+            return;
+          }
+          if (now >= start) {
+            el.textContent = 'happening right now';
+            return;
+          }
+          var s = Math.floor((start - now) / 1000);
+          var d = Math.floor(s / 86400);
+          var h = Math.floor((s % 86400) / 3600);
+          var m = Math.floor((s % 3600) / 60);
+          el.textContent = d + ' days, ' + h + ' hours and ' + m + ' minutes';
+          setTimeout(tick, 20000);
+        }
+        tick();
+      })();
+
+      /* ============ FAQ (event questions + the site's own, from the CMS) ============ */
+      (function () {
+        var items = [
+          [
+            'Do I need a ticket?',
+            'No. Registration is open and free — confirm your attendance here, and bring your invitation QR (or your name) to the registration desk from 17:25.',
+          ],
+          [
+            'What time should I arrive?',
+            'Doors open at 17:25 and hall entry begins at 18:25. Guests are kindly requested to be seated by 18:40 in Ballrooms 2 & 3 — the stage programme starts at 18:45.',
+          ],
+          [
+            'What is Face ID entry?',
+            'An optional fast lane powered by ThirdFactor: opt in during registration, capture your face once, and walk in on the night without queuing for a check-in.',
+          ],
+        ];
+        var cms =
+          window.INMARK_CONTENT &&
+          window.INMARK_CONTENT.faq &&
+          window.INMARK_CONTENT.faq.brands;
+        if (cms && cms.length)
+          items = items.concat(
+            cms.map(function (qa) {
+              return [
+                String(qa[0]).replace(/In[Mm]ark/g, 'Inmark'),
+                String(qa[1]).replace(/In[Mm]ark/g, 'Inmark'),
+              ];
+            }),
+          );
+        var list = document.getElementById('faqList');
+        list.innerHTML = items
+          .map(function (qa, i) {
+            return (
+              '<div class="faq-item' +
+              (i === 0 ? ' is-open' : '') +
+              '">' +
+              '<button class="faq-item__q" aria-expanded="' +
+              (i === 0) +
+              '"><span>' +
+              qa[0] +
+              '</span><span class="faq-item__icon"></span></button>' +
+              '<div class="faq-item__a"><div class="faq-item__a-inner"><p>' +
+              qa[1] +
+              '</p></div></div></div>'
+            );
+          })
+          .join('');
+        list.addEventListener('click', function (e) {
+          var q = e.target.closest('.faq-item__q');
+          if (!q) return;
+          var it = q.parentElement;
+          var open = it.classList.contains('is-open');
+          list.querySelectorAll('.faq-item.is-open').forEach(function (o) {
+            o.classList.remove('is-open');
+            o.querySelector('.faq-item__q').setAttribute(
+              'aria-expanded',
+              'false',
+            );
+          });
+          if (!open) {
+            it.classList.add('is-open');
+            q.setAttribute('aria-expanded', 'true');
+          }
+        });
+      })();
+
+      /* ============ Registration (inline) + Face ID capture ============ */
+      (function () {
+        var panel = document.getElementById('joinPanel');
+        var form = document.getElementById('rsvpForm');
+        var btn = document.getElementById('rsvpBtn');
+        var err = document.getElementById('rsvpErr');
+        var faceErr = document.getElementById('faceErr');
+        var video = document.getElementById('faceVideo');
+        var snap = document.getElementById('faceSnap');
+        var stream = null;
+        var rsvpId = null;
+
+        function stopCam() {
+          if (stream) {
+            stream.getTracks().forEach(function (t) {
+              t.stop();
+            });
+            stream = null;
+          }
+        }
+        /* invited guests who already registered see their confirmed state
+         (server truth via /api/guest); the walk-in form stays open for anyone */
+        window.markAlreadyConfirmed = function (name) {
+          document.getElementById('doneTitle').textContent =
+            'You’re already confirmed' +
+            (name ? ', ' + name.split(' ')[0] : '') +
+            '.';
+          document.getElementById('doneSub').textContent =
+            'See you on Sep 23. Doors open 17:25; please be seated by 18:40 in Ballrooms 2 & 3.';
+          panel.dataset.step = 'done';
+        };
+        var lastName = '';
+        function finish() {
+          if (CODE) {
+            window.markAlreadyConfirmed(lastName);
+          } else {
+            form.reset();
+            panel.dataset.step = 'form';
+          }
+          openCongrats(lastName);
+        }
+
+        form.addEventListener('submit', async function (e) {
+          e.preventDefault();
+          err.classList.remove('is-on');
+          var data = {
+            code: CODE || undefined,
+            name: form.name.value.trim(),
+            org: form.org.value.trim(),
+            contact: form.contact.value.trim(),
+            seats: form.seats.value,
+            faceOptIn: form.faceOptIn.checked,
+            website: form.website.value,
+          };
+          if (!data.name) {
+            err.textContent = 'Please tell us your full name.';
+            err.classList.add('is-on');
+            return;
+          }
+          btn.disabled = true;
+          btn.querySelector('.btn-go__label').textContent = 'Saving…';
+          try {
+            var r = await fetch('/api/rsvp', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(data),
+            });
+            var j = await r.json();
+            if (!j.ok) throw new Error();
+            rsvpId = j.id || null;
+            lastName = data.name;
+            if (data.faceOptIn) {
+              startFace();
+            } else {
+              finish();
+            }
+          } catch (e3) {
+            err.textContent =
+              'Could not save your registration. Please try again, or just come along: you’re invited either way.';
+            err.classList.add('is-on');
+          }
+          btn.disabled = false;
+          btn.querySelector('.btn-go__label').textContent = 'I’ll be there';
+        });
+
+        async function startFace() {
+          panel.dataset.step = 'face';
+          faceErr.classList.remove('is-on');
+          snap.hidden = true;
+          video.hidden = false;
+          try {
+            stream = await navigator.mediaDevices.getUserMedia({
+              video: { facingMode: 'user', width: { ideal: 720 } },
+              audio: false,
+            });
+            video.srcObject = stream;
+          } catch (e) {
+            faceErr.textContent =
+              'Camera unavailable. You can skip for now and set up Face ID at the registration desk.';
+            faceErr.classList.add('is-on');
+          }
+        }
+        document
+          .getElementById('faceSkip')
+          .addEventListener('click', function () {
+            stopCam();
+            finish();
+          });
+        document
+          .getElementById('faceCapture')
+          .addEventListener('click', async function () {
+            if (!stream) {
+              faceErr.textContent =
+                'Camera unavailable — skip for now, we’ll enroll you at the desk.';
+              faceErr.classList.add('is-on');
+              return;
+            }
+            var cbtn = this;
+            var c = document.createElement('canvas');
+            var s = Math.min(video.videoWidth, video.videoHeight, 720);
+            c.width = s;
+            c.height = s;
+            var x = c.getContext('2d');
+            x.translate(s, 0);
+            x.scale(-1, 1); /* un-mirror */
+            x.drawImage(
+              video,
+              (video.videoWidth - s) / 2,
+              (video.videoHeight - s) / 2,
+              s,
+              s,
+              0,
+              0,
+              s,
+              s,
+            );
+            snap.src = c.toDataURL('image/jpeg', 0.85);
+            snap.hidden = false;
+            video.hidden = true;
+            cbtn.disabled = true;
+            cbtn.querySelector('.btn-go__label').textContent = 'Saving…';
+            try {
+              var blob = await new Promise(function (res) {
+                c.toBlob(res, 'image/jpeg', 0.85);
+              });
+              var q = CODE
+                ? 'c=' + encodeURIComponent(CODE)
+                : rsvpId
+                  ? 'r=' + encodeURIComponent(rsvpId)
+                  : '';
+              var r = await fetch('/api/faceid?' + q, {
+                method: 'POST',
+                headers: { 'Content-Type': 'image/jpeg' },
+                body: blob,
+              });
+              var j = await r.json();
+              if (!j.ok) throw new Error();
+              stopCam();
+              document.getElementById('cgSub').textContent = j.enrolled
+                ? 'Face ID is set — walk straight in on the night. Doors open 17:25; please be seated by 18:40 in Ballrooms 2 & 3.'
+                : 'Face captured — your Face ID pass will be confirmed before the event. Doors open 17:25; be seated by 18:40 in Ballrooms 2 & 3.';
+              finish();
+            } catch (e) {
+              faceErr.textContent =
+                'Could not save the capture. Try again, or skip — we’ll enroll you at the desk.';
+              faceErr.classList.add('is-on');
+              snap.hidden = true;
+              video.hidden = false;
+            }
+            cbtn.disabled = false;
+            cbtn.querySelector('.btn-go__label').textContent = 'Capture';
+          });
+      })();
+
+      /* ============ Program conveyor — the landing page's process mechanic ============ */
+      (function () {
+        var REDUCED = window.matchMedia(
+          '(prefers-reduced-motion: reduce)',
+        ).matches;
+        var sec = document.getElementById('evflow');
+        var cards = Array.prototype.slice.call(
+          document.querySelectorAll('#evflowCards .evcard'),
+        );
+        if (!sec || !cards.length || REDUCED) return;
+        var on = false;
+        function evalMode() {
+          var want = innerWidth > 760;
+          if (want === on) return;
+          on = want;
+          document.body.classList.toggle('evflow-on', on);
+          if (!on)
+            cards.forEach(function (c) {
+              c.style.transform = '';
+              c.style.visibility = '';
+              c.style.zIndex = '';
+            });
+        }
+        evalMode();
+        addEventListener('resize', evalMode);
+        var P = 0;
+        var clamp01 = function (v) {
+          return Math.min(1, Math.max(0, v));
+        };
+        /* the color bars breathe with scroll: taller while rising from the
+         bottom of the screen, back to rest as they reach center */
+        var barsEl = document.querySelector('.evbars');
+        var barEls = barsEl ? Array.prototype.slice.call(barsEl.children) : [];
+        var barBase = barEls.map(function (b) {
+          var cs = getComputedStyle(b);
+          return [
+            parseFloat(cs.paddingTop) || 12,
+            parseFloat(cs.paddingBottom) || 12,
+          ];
+        });
+        var barCur = barEls.map(function () {
+          return 0.45;
+        });
+        var ease = function (t) {
+          return t * t * (3 - 2 * t);
+        };
+        function breatheBars(vh) {
+          if (!barsEl) return;
+          var r = barsEl.getBoundingClientRect();
+          if (r.bottom < -80 || r.top > vh + 80) return;
+          var p = clamp01((r.top + r.height / 2 - vh / 2) / (vh / 2));
+          var PEAK = 3.0;
+          var SMALL = 0.45;
+          barEls.forEach(function (b, i) {
+            var local = clamp01(p + (i - 2) * 0.05);
+            // closed-small below the fold, swelling to a peak mid-rise,
+            // settling to the resting height by screen center
+            var target =
+              local > 0.5
+                ? PEAK + (SMALL - PEAK) * ease((local - 0.5) * 2)
+                : 1 + (PEAK - 1) * ease(local * 2);
+            barCur[i] += (target - barCur[i]) * 0.085;
+            b.style.paddingTop = (barBase[i][0] * barCur[i]).toFixed(1) + 'px';
+            b.style.paddingBottom =
+              (barBase[i][1] * barCur[i]).toFixed(1) + 'px';
+          });
+        }
+        /* the pinned title follows whichever card holds the featured spot */
+        var head = document.getElementById('flowHead');
+        var titleEl = document.getElementById('flowTitle');
+        var timeEl = document.getElementById('flowTime');
+        var shownIdx = null;
+        var swapT = null;
+        function setFlowTitle(i) {
+          if (i === shownIdx) return;
+          shownIdx = i;
+          head.classList.add('is-swapping');
+          clearTimeout(swapT);
+          swapT = setTimeout(function () {
+            if (i < 0) {
+              titleEl.textContent = 'The program schedule';
+              timeEl.hidden = true;
+            } else {
+              titleEl.textContent =
+                cards[i].querySelector('.evcard__t').textContent;
+              timeEl.textContent =
+                cards[i].querySelector('.evcard__time').textContent;
+              timeEl.hidden = false;
+            }
+            head.classList.remove('is-swapping');
+          }, 110);
+        }
+        function tick() {
+          breatheBars(innerHeight);
+          if (on) {
+            var vh = innerHeight;
+            var wr = sec.getBoundingClientRect();
+            if (wr.bottom > -100 && wr.top < vh + 100) {
+              var gpT = clamp01(-wr.top / Math.max(1, wr.height - vh));
+              P += (gpT - P) * 0.11;
+              var gp = Math.abs(gpT - P) < 0.0005 ? (P = gpT) : P;
+              var sp = 0.2;
+              var T = 0.9 + (cards.length - 1) * sp;
+              var vw = innerWidth;
+              var featured = -1;
+              var best = 1e9;
+              cards.forEach(function (card, i) {
+                var u = 0.1 + gp * T - i * sp;
+                if (u > 0.2 && u < 0.84) {
+                  var d = Math.abs(u - 0.5);
+                  if (d < best) {
+                    best = d;
+                    featured = i;
+                  }
+                }
+                if (u < -0.05 || u > 1.25) {
+                  card.style.visibility = 'hidden';
+                  return;
+                }
+                card.style.visibility = 'visible';
+                var uc = clamp01(u);
+                var x =
+                  ((50 + (u - 0.5) * 170) / 100) * vw - card.offsetWidth / 2;
+                var y = ((2 + 95 * Math.pow(1 - uc, 1.6)) / 100) * vh;
+                var rx = Math.min(50, Math.max(-50, (50 * (0.5 - u)) / 0.28));
+                card.style.transform =
+                  'translate3d(' +
+                  x.toFixed(1) +
+                  'px,' +
+                  y.toFixed(1) +
+                  'px,0) rotateX(' +
+                  rx.toFixed(1) +
+                  'deg)';
+                card.style.zIndex = String(
+                  100 - Math.round(Math.abs(u - 0.5) * 90),
+                );
+              });
+              setFlowTitle(featured);
+            }
+          }
+          requestAnimationFrame(tick);
+        }
+        requestAnimationFrame(tick);
+      })();
+
+      /* ============ Confirmation modal + confetti ============ */
+      var openCongrats = (function () {
+        var modal = document.getElementById('congrats');
+        var canvas = document.getElementById('cgCanvas');
+        var raf = null;
+        function confetti() {
+          if (window.matchMedia('(prefers-reduced-motion: reduce)').matches)
+            return;
+          var ctx = canvas.getContext('2d');
+          var box = canvas.parentElement.getBoundingClientRect();
+          canvas.width = box.width * devicePixelRatio;
+          canvas.height = box.height * devicePixelRatio;
+          ctx.scale(devicePixelRatio, devicePixelRatio);
+          var colors = ['#E4EA02', '#FF77E5', '#FF2D02', '#AADCC6', '#FF8A00'];
+          var bits = [];
+          for (var i = 0; i < 140; i++) {
+            bits.push({
+              x: Math.random() * box.width,
+              y: -20 - Math.random() * box.height * 0.6,
+              w: 6 + Math.random() * 7,
+              h: 8 + Math.random() * 10,
+              c: colors[i % colors.length],
+              vy: 2 + Math.random() * 2.6,
+              vx: -1 + Math.random() * 2,
+              rot: Math.random() * Math.PI,
+              vr: -0.12 + Math.random() * 0.24,
+            });
+          }
+          var start = performance.now();
+          cancelAnimationFrame(raf);
+          (function frame(now) {
+            var t = now - start;
+            ctx.clearRect(0, 0, box.width, box.height);
+            bits.forEach(function (b) {
+              b.x += b.vx;
+              b.y += b.vy;
+              b.rot += b.vr;
+              ctx.save();
+              ctx.translate(b.x, b.y);
+              ctx.rotate(b.rot);
+              ctx.fillStyle = b.c;
+              ctx.globalAlpha =
+                t > 4200 ? Math.max(0, 1 - (t - 4200) / 800) : 1;
+              ctx.fillRect(-b.w / 2, -b.h / 2, b.w, b.h);
+              ctx.restore();
+            });
+            if (t < 5000 && modal.classList.contains('is-open'))
+              raf = requestAnimationFrame(frame);
+            else ctx.clearRect(0, 0, box.width, box.height);
+          })(start);
+        }
+        function close() {
+          modal.classList.remove('is-open');
+          document.body.style.overflow = '';
+          cancelAnimationFrame(raf);
+        }
+        modal.addEventListener('click', function (e) {
+          if (e.target.closest('[data-cg-close]')) close();
+        });
+        addEventListener('keydown', function (e) {
+          if (e.key === 'Escape' && modal.classList.contains('is-open'))
+            close();
+        });
+        document.getElementById('cgCal').addEventListener('click', function () {
+          var fmt = function (iso) {
+            return new Date(iso).toISOString().replace(/[-:]|\.\d{3}/g, '');
+          };
+          var u =
+            'https://calendar.google.com/calendar/render?action=TEMPLATE' +
+            '&text=' +
+            encodeURIComponent('Inmark Launch Night') +
+            '&dates=' +
+            fmt(EVENT.start) +
+            '/' +
+            fmt(EVENT.end) +
+            '&details=' +
+            encodeURIComponent(
+              'The official launch of Inmark. Doors 17:25, please be seated by 18:40, ' +
+                'Ballrooms 2 & 3.',
+            ) +
+            '&location=' +
+            encodeURIComponent(EVENT.venue + ', Kathmandu');
+          window.open(u, '_blank', 'noopener');
+        });
+        return function (name) {
+          document.getElementById('cgTitle').textContent = name
+            ? 'You’re confirmed, ' + name.split(' ')[0] + '!'
+            : 'You’re confirmed!';
+          modal.classList.add('is-open');
+          document.body.style.overflow = 'hidden';
+          requestAnimationFrame(confetti);
+        };
+      })();
+
+      /* ============ Reveal (holds until the preloader's curtain lifts) ============ */
+      (function () {
+        function startReveals() {
+          var io = new IntersectionObserver(
+            function (es) {
+              es.forEach(function (en) {
+                if (en.isIntersecting || en.boundingClientRect.top < 0) {
+                  en.target.classList.add('is-in');
+                  io.unobserve(en.target);
+                }
+              });
+            },
+            { threshold: 0.1 },
+          );
+          document.querySelectorAll('.rv, .evbars').forEach(function (el) {
+            io.observe(el);
+          });
+        }
+        if (document.body.classList.contains('is-loading')) {
+          document.addEventListener(
+            'inmark:ready',
+            function () {
+              setTimeout(startReveals, 250);
+            },
+            { once: true },
+          );
+        } else {
+          startReveals();
+        }
+      })();
+    </script>
+    <script src="/js/footer.js?v=23"></script>
+    <script type="module" src="/js/ribbons.js?v=22"></script>
+  </body>
+</html>

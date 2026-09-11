@@ -1,0 +1,17 @@
+{
+  "framework": null,
+  "buildCommand": "",
+  "outputDirectory": ".",
+  "rewrites": [
+    {
+      "source": "/",
+      "has": [{ "type": "host", "value": "launch.inmark.ai" }],
+      "destination": "/event/index.html"
+    },
+    {
+      "source": "/:code([a-z0-9]+(?:-[a-z0-9]+)+)",
+      "has": [{ "type": "host", "value": "launch.inmark.ai" }],
+      "destination": "/event/index.html?i=:code"
+    }
+  ]
+}

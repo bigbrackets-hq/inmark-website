@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign in — InMark Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/admin.css" />
+  <style>
+    .login {
+      min-height: 100vh; display: flex; align-items: center; justify-content: center;
+      background: var(--bg); padding: 24px;
+    }
+    .login__card {
+      width: 380px; background: var(--panel); border: 1px solid var(--line);
+      border-radius: 16px; padding: 34px 32px 30px;
+      box-shadow: 0 8px 30px rgba(28, 28, 40, 0.06);
+    }
+    .login__brand { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 16px; margin-bottom: 6px; }
+    .login__brand img { width: 30px; height: 30px; border-radius: 8px; }
+    .login__brand em { font-style: normal; color: var(--accent); }
+    .login__sub { color: var(--mut); font-size: 13px; margin-bottom: 24px; }
+    .login__btn {
+      width: 100%; margin-top: 20px; background: var(--accent); color: #fff;
+      font-weight: 600; font-size: 14px; padding: 11px; border-radius: 10px;
+      transition: background 0.15s;
+    }
+    .login__btn:hover { background: #4A4AC4; }
+    .login__btn:disabled { opacity: 0.6; }
+    .login__err { color: #C0392B; font-size: 13px; margin-top: 14px; min-height: 18px; }
+  </style>
+</head>
+<body>
+  <div class="login">
+    <form class="login__card" id="loginForm">
+      <div class="login__brand">
+        <img src="assets/inmark-logo-icon-dark.svg" alt="" />
+        <span>InMark <em>Studio</em></span>
+      </div>
+      <p class="login__sub">Sign in to manage the site content.</p>
+      <div class="f"><label>Username</label><input type="text" id="lu" autocomplete="username" required /></div>
+      <div class="f"><label>Password</label><input type="password" id="lp" autocomplete="current-password" required /></div>
+      <button class="login__btn" type="submit" id="lbtn">Sign in</button>
+      <p class="login__err" id="lerr"></p>
+    </form>
+  </div>
+  <script>
+    document.getElementById('loginForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const btn = document.getElementById('lbtn');
+      const err = document.getElementById('lerr');
+      btn.disabled = true;
+      err.textContent = '';
+      try {
+        const r = await fetch('/api/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ username: document.getElementById('lu').value.trim(), password: document.getElementById('lp').value })
+        });
+        const data = await r.json();
+        if (!data.ok) throw new Error(data.error || 'Sign-in failed');
+        try { localStorage.setItem('inmark-studio-key', data.token); } catch (e2) {}
+        const secure = location.protocol === 'https:' ? '; Secure' : '';
+        document.cookie = 'inmark_session=' + data.token + '; Path=/; Max-Age=' + 7 * 24 * 3600 + '; SameSite=Strict' + secure;
+        location.href = 'admin.html';
+      } catch (e2) {
+        err.textContent = e2.message;
+      }
+      btn.disabled = false;
+    });
+  </script>
+</body>
+</html>

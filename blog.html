@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog — InMark</title>
+  <meta name="description" content="Guides and thinking on creator marketing from the InMark team." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&family=Be+Vietnam+Pro:wght@400;500;600&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css?v=32" />
+  <script>document.documentElement.classList.add('pt-enter');</script>
+  <script src="js/content-store.js?v=22"></script>
+  <script src="api/content-js"></script>
+</head>
+<body>
+
+  <header class="nav nav--solid" id="nav">
+    <div class="nav__inner">
+      <a class="nav__logo" href="index.html" aria-label="InMark home">
+        <img src="assets/inmark-logo-dark.svg" alt="inmark" />
+      </a>
+      <nav class="nav__pill" aria-label="Primary">
+        <a href="index.html#audiences">Audiences</a>
+        <a href="index.html#features">Core Features</a>
+        <a href="index.html#agent">AI Agents</a>
+        <a href="index.html#workflow">Workflow</a>
+        <a class="is-active" href="blog.html">Blogs</a>
+        <a href="index.html#faq">FAQ</a>
+        <a href="index.html#cta">Download App</a>
+      </nav>
+      <div class="nav__actions">
+        <a class="btn btn--white" href="#">Log In</a>
+        <a class="btn btn--dark" href="index.html#cta">Get Started</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="blogpage">
+    <div class="bhero">
+      <p class="blogpage__eyebrow">Journal</p>
+      <h1 class="bhero__title">Inside InMark</h1>
+      <div class="bhero__track" id="bheroTrack"><!-- featured posts --></div>
+      <div class="bhero__dots" id="bheroDots"></div>
+    </div>
+    <div class="container">
+      <div class="blogpage__chips" aria-hidden="true">
+        <span class="tab is-active">All</span><span class="tab">Guides</span><span class="tab">Product</span><span class="tab">Playbooks</span>
+      </div>
+      <div class="blogpage__grid" id="blogGrid"><!-- rendered from posts.js --></div>
+    </div>
+  </main>
+
+  <div id="siteFooter"></div>
+
+  <script src="js/posts.js?v=10"></script>
+  <script>
+    if (window.INMARK_CONTENT && window.INMARK_CONTENT.posts && window.INMARK_CONTENT.posts.length) window.INMARK_POSTS = window.INMARK_CONTENT.posts;
+    var CATS = ['Company', 'Guides', 'Product'];
+    var AVATARS = [
+      'https://images.unsplash.com/photo-1775486101687-1950422dbca7?w=96&q=78&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1653479210318-b6f3421dc171?w=96&q=78&auto=format&fit=crop'
+    ];
+    var NAMES = ['Smita Tiwari', 'Samip Poudel'];
+    var TONES = ['bh-card--pink', 'bh-card--lime', 'bh-card--mint'];
+    var pinnedPosts = window.INMARK_POSTS.filter(function (p) { return p.featured; });
+    var featured = (pinnedPosts.length ? pinnedPosts : window.INMARK_POSTS).slice(0, 3);
+    document.getElementById('bheroTrack').innerHTML = featured.map(function (p, i) {
+      return '<a class="bh-card ' + TONES[i] + '" href="blog-post.html?p=' + p.slug + '">' +
+        '<div class="bh-card__body">' +
+        '<div class="bh-card__chips"><span>Featured</span><span>' + CATS[i] + '</span></div>' +
+        '<h2 class="bh-card__title">' + p.title + '</h2>' +
+        '<div class="bh-card__meta"><img src="' + AVATARS[i % 2] + '" alt="" /><strong>' + NAMES[i % 2] + '</strong><span>•</span><span>' + p.date + '</span><span>•</span><span>' + p.read + '</span></div>' +
+        '</div>' +
+        '<div class="bh-card__media"><img src="' + p.img + '" alt="" /></div></a>';
+    }).join('');
+    var track = document.getElementById('bheroTrack');
+    var dotsWrap = document.getElementById('bheroDots');
+    dotsWrap.innerHTML = featured.map(function (p, i) {
+      return '<button aria-label="Go to featured post ' + (i + 1) + '"' + (i === 0 ? ' class="is-active"' : '') + '></button>';
+    }).join('');
+    var dots = Array.prototype.slice.call(dotsWrap.children);
+    var cards = Array.prototype.slice.call(track.children);
+    dots.forEach(function (d, i) {
+      d.addEventListener('click', function () {
+        track.scrollTo({ left: cards[i].offsetLeft - (track.clientWidth - cards[i].offsetWidth) / 2, behavior: 'smooth' });
+      });
+    });
+    track.addEventListener('scroll', function () {
+      var mid = track.scrollLeft + track.clientWidth / 2;
+      var best = 0, bd = Infinity;
+      cards.forEach(function (c, i) {
+        var d = Math.abs(c.offsetLeft + c.offsetWidth / 2 - mid);
+        if (d < bd) { bd = d; best = i; }
+      });
+      dots.forEach(function (d, i) { d.classList.toggle('is-active', i === best); });
+    }, { passive: true });
+    document.getElementById('blogGrid').innerHTML = window.INMARK_POSTS.filter(function (p) { return featured.indexOf(p) === -1; }).map(function (p) {
+      return '<a class="blog-card" href="blog-post.html?p=' + p.slug + '">' +
+        '<figure><img src="' + p.img + '" alt="" loading="lazy" /></figure>' +
+        '<h3>' + p.title + '</h3>' +
+        '<p class="blog-card__meta">' + p.date + ' &nbsp;•&nbsp; ' + p.read + '</p>' +
+        '<p class="blog-card__excerpt">' + p.excerpt + '</p></a>';
+    }).join('');
+    document.querySelectorAll('.blog-card').forEach(function (card) {
+      var img = card.querySelector('img');
+      card.addEventListener('mousemove', function (e) {
+        var r = card.getBoundingClientRect();
+        var px = (e.clientX - r.left) / r.width - 0.5;
+        var py = (e.clientY - r.top) / r.height - 0.5;
+        card.style.transform = 'perspective(700px) rotateY(' + px * 7 + 'deg) rotateX(' + -py * 6 + 'deg) translateY(-4px)';
+        if (img) img.style.transform = 'scale(1.08) translate(' + px * -8 + 'px,' + py * -8 + 'px)';
+      }, { passive: true });
+      card.addEventListener('mouseleave', function () { card.style.transform = ''; if (img) img.style.transform = ''; }, { passive: true });
+    });
+  </script>
+  <script src="js/footer.js?v=22"></script>
+  <script type="module" src="js/ribbons.js?v=22"></script>
+  <script src="js/transition.js?v=24"></script>
+</body>
+</html>
