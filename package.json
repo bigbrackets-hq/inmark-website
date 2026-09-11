@@ -1,7 +1,30 @@
 {
   "name": "inmark-website",
+  "version": "1.0.0",
   "private": true,
+  "description": "inmark-website ",
+  "homepage": "https://github.com/bigbrackets-hq/inmark-website#readme",
+  "bugs": {
+    "url": "https://github.com/bigbrackets-hq/inmark-website/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bigbrackets-hq/inmark-website.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "build.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
   "dependencies": {
-    "@vercel/blob": "latest"
+    "@vercel/blob": "latest",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "mongoose": "^9.10.0",
+    "nodemon": "^3.1.14"
   }
 }
